@@ -1,0 +1,91 @@
+.imageBg {
+  height: 80vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  height: 100%;
+}
+
+.image img {
+  width: 100%;
+  height: auto;
+}
+
+.textImage {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.textImage p{
+    font-size: 3em;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .imageBg {
+        height: 30vh;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .image {
+        height: 100%;
+      }
+      
+      .image img {
+        width: 100%;
+        height: auto;
+      }
+      
+      .textImage {
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .textImage p{
+        font-size: 1.3em;
+        color: #FFF;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    
+}
+
+.annunciment{
+  background-image: url('../../../assets/Images/imagem-visita.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; /* Centraliza a imagem de fundo */
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contats {
+    background-image: url('../../../assets/Images/backgroundCollection.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; /* Centraliza a imagem de fundo */
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+

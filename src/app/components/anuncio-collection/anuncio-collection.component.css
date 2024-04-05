@@ -1,0 +1,8 @@
+.imgAnounce{
+    display: flex;
+    flex-direction: column;
+}
+
+.imgAnounce img{
+    border: 15px solid #FFFF;
+}
