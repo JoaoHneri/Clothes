@@ -1,8 +1,10 @@
-.imgAnounce{
-    display: flex;
-    flex-direction: column;
+.imgAnounce {
+    max-width: 100%;
 }
 
-.imgAnounce img{
-    border: 15px solid #FFFF;
+.imgAnounce img {
+    width: 100%; 
+    height: auto; 
+    border: 5px solid #FFF;
+
 }

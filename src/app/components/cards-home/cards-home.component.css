@@ -1,0 +1,38 @@
+  
+  .card {
+    position: relative;
+    margin: 5px; /* Espaçamento entre os cards */
+    width: 200px; /* Largura inicial do card */
+    scroll-snap-align: start; /* Alinha os cards na borda do slider */
+  }
+  
+  .card img {
+    max-width: 100%; /* Garante que a imagem não ultrapasse os limites do card */
+    height: auto; /* Permite que a altura seja ajustada automaticamente para manter a proporção */
+  }
+  
+  .legenda {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .legenda h1 {
+    font-size: 1rem; /* Tamanho da fonte da legenda */
+  }
+  
+ 
+
+
+  @media screen and (max-width: 768px) {
+    .card {
+      width: 80px; /* Reduz a largura do card para telas menores */
+    }
+  
+    .legenda h1 {
+      font-size: 0.55rem; /* Reduz ainda mais o tamanho da fonte da legenda */
+    }
+  }
+  

@@ -67,22 +67,24 @@
     
 }
 
-.annunciment{
+.annunciment {
   background-image: url('../../../assets/Images/imagem-visita.png');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center; /* Centraliza a imagem de fundo */
+  background-position: center; 
   height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden; 
+  position: relative; 
 }
 
 .contats {
     background-image: url('../../../assets/Images/backgroundCollection.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center; /* Centraliza a imagem de fundo */
+    background-position: center;
     height: 60vh;
     display: flex;
     align-items: center;

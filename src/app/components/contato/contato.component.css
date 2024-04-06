@@ -1,22 +1,47 @@
-.noite{
+
+.noite {
     background-color: #FFFFFF;
     width: 632px;
     height: 252px;
     padding: 20px;
 }
 
-.noite .scInfos{
+.noite .scInfos {
     padding: 15px;
     padding-bottom: 35px;
 }
+
 .noite h1 {
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 10px;
     text-transform: uppercase;
-
 }
 
 .noite .scInfos p {
     font-size: 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .noite {
+        width: 90%;
+        max-width: none; 
+        height: auto; 
+        padding: 10px; 
+    }
+
+    .noite .scInfos {
+        padding: 10px; 
+        padding-bottom: 20px;
+    }
+
+    .noite h1 {
+        font-size: 3vw;
+        margin-bottom: 5px;
+    }
+
+    .noite .scInfos p {
+        font-size: 2.5vw;
+    }
 }
