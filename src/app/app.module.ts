@@ -9,6 +9,10 @@ import { CardsHomeComponent } from './components/cards-home/cards-home.component
 import { AnuncioCollectionComponent } from './components/anuncio-collection/anuncio-collection.component';
 import { ContatoComponent } from './components/contato/contato.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ProdutcsPagesComponent } from './pages/produtcs-pages/produtcs-pages.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CarrinhoOffcanvasComponent } from './components/carrinho-offcanvas/carrinho-offcanvas.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +22,15 @@ import { FooterComponent } from './components/footer/footer.component';
     CardsHomeComponent,
     AnuncioCollectionComponent,
     ContatoComponent,
-    FooterComponent
+    FooterComponent,
+    ProdutcsPagesComponent,
+    ProductCardComponent,
+    CarrinhoOffcanvasComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

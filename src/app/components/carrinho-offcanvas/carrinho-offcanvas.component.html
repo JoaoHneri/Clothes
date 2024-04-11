@@ -1,0 +1,12 @@
+
+
+<div class="off-canvas" [class.open]="isClicked">
+    <button class="close-button" (click)="closeOffCanvas()">&times;</button>
+    <ng-container *ngIf="isClicked">
+      <div class="off-canvas-content">
+          <div class="data-container">
+              <h1>Carrinho</h1>
+            </div>
+      </div>
+    </ng-container>
+  </div>

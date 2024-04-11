@@ -6,9 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  click = false;
+  
   constructor() { }
 
+  clickHistory(): void {
+    this.click = !this.click;
+  }
   ngOnInit(): void {
   }
 

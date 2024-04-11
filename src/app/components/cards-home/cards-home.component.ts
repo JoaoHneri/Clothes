@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CardsHomeComponent implements OnInit {
   @Input()title: String = '';
   @Input()src: String = '';
+  @Input()category: String = '';
   constructor() { }
 
   ngOnInit(): void {

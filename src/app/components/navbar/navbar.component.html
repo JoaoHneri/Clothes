@@ -6,6 +6,7 @@
     <a href="" class="hover:text-stone-500">Sobre Nós</a>
   </div>
   <div>
-    <input type="text" placeholder="Faça sua pesquisa" class="mt-4 sm:mt-0"/>
+    <a (click)="clickHistory()">Carrinho</a>
   </div>
 </div>
+<app-carrinho-offcanvas [(isClicked)]="click"></app-carrinho-offcanvas>
