@@ -17,6 +17,9 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { ModalAuthComponent } from './components/modal-auth/modal-auth.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +34,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CarrinhoOffcanvasComponent,
     LoginPageComponent,
     LoginFormComponent,
+    RegisterFormComponent,
+    ModalAuthComponent,
   ],
   imports: [
     BrowserModule,

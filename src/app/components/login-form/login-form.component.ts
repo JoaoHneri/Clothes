@@ -7,24 +7,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class LoginFormComponent {
 
-  @Output() closeModalEvent = new EventEmitter<boolean>();
-  isRegisterModalOpen: boolean = true; 
-  isLoginModalOpen: boolean = false; 
+  @Output() switchToRegisterEvent = new EventEmitter<void>();
+  @Output() switchComponent = new EventEmitter<string>();
 
   constructor() { }
 
-  setModal(type: string) {
-    if (type === 'register') {
-      this.isRegisterModalOpen = true;
-      this.isLoginModalOpen = false;
-    } else if (type === 'login') {
-      this.isRegisterModalOpen = false;
-      this.isLoginModalOpen = true;
-    }
-  }
 
-  closeModal() {
-    this.closeModalEvent.emit(true);
-  }
 
 }
