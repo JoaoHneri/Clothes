@@ -18,15 +18,14 @@ export class ProdutcsPagesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const category = this.route.snapshot.paramMap.get('category');
-    console.log("Esta e categoria " + category)
+    const category = String(this.route.snapshot.paramMap.get('category'));
+
     category ==  "feminina" ? this.categoria = "Moda Feminina" : null;
     category ==  "masculina" ? this.categoria = "Moda Masculina" : null;
     category == "acessorios" ? this.categoria = "Acessórios" : null;
     category == "tenis" ? this.categoria = "Tênis" : null;
 
-
-    this.produtosS.getProdutos().subscribe((item)=> {
+    this.produtosS.getProdutosPorCategoria(category).subscribe((item)=> {
       this.produtos = item;
     });
   }

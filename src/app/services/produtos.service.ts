@@ -14,6 +14,11 @@ export class ProdutosService {
   
   constructor(private http: HttpClient) { }
 
+  getProdutosPorCategoria( categoria:String ): Observable<Product>{
+    const Url = `${this.ApiUrl}products/category/${categoria.toLowerCase()}`
+    return this.http.get<Product>(Url);
+  }
+
   getProdutos():Observable<Product>{
     const Url = `${this.ApiUrl}products`
     return this.http.get<Product>(Url);

@@ -13,7 +13,10 @@ import { ProdutcsPagesComponent } from './pages/produtcs-pages/produtcs-pages.co
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CarrinhoOffcanvasComponent } from './components/carrinho-offcanvas/carrinho-offcanvas.component';
-
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,13 +29,17 @@ import { CarrinhoOffcanvasComponent } from './components/carrinho-offcanvas/carr
     ProdutcsPagesComponent,
     ProductCardComponent,
     CarrinhoOffcanvasComponent,
+    LoginPageComponent,
+    LoginFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule, 
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

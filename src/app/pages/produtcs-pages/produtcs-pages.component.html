@@ -8,6 +8,10 @@
     </form>
 </div>
 
-<div class="products">
+<div class="products" *ngIf="produtos">
     <app-product-card *ngFor="let prod of produtos" titulo="{{prod.productName}}" descricao="{{prod.productDescription}}" preco="{{prod.productPrice}}"></app-product-card>
+</div>
+
+<div class="flex justify-center h-96 m-20 p-48 items-center" *ngIf="!produtos">
+    <h1>Desculpe... Parece que ainda não existe produtos para essa categória</h1>
 </div>

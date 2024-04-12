@@ -6,7 +6,9 @@
     <a href="" class="hover:text-stone-500">Sobre Nós</a>
   </div>
   <div>
+    <a mat-raised-button (click)="openModal()">Entrar</a>
     <a (click)="clickHistory()">Carrinho</a>
   </div>
 </div>
 <app-carrinho-offcanvas [(isClicked)]="click"></app-carrinho-offcanvas>
+<app-login-form *ngIf="showModal" (closeModalEvent)="closeModal()"></app-login-form>

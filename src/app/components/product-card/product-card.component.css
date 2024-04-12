@@ -44,9 +44,18 @@
    }
    
    .text-body {
-    font-size: .9em;
-    padding-bottom: 10px;
-   }
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .seeMore{
+    font-size: 13px;
+  }
+  
+  .ler-mais-btn {
+    display: none;
+  }
    
    /*Button*/
    .card-button {
@@ -69,3 +78,44 @@
     background-color: #ffcaa6;
    }
    
+
+
+   @media only screen and (max-width: 768px) {
+    .card {
+        width: 150px;
+        height: 270px;
+       }
+
+       .card-img {
+        background-color: #ffcaa6;
+        height: 50%;
+        width: 100%;
+        border-radius: .5rem;
+        transition: .3s ease;
+       }
+
+       .text-title {
+        font-weight: 800;
+        font-size: .8em;
+        line-height: 1.5;
+       }
+       
+       .text-body {
+        font-size: .7em;
+        padding-bottom: 10px;
+       }
+       
+       .seeMore{
+        font-size: 13px;
+      }
+       /*Button*/
+       .card-button {
+        border: 1px solid #252525;
+        display: flex;
+        padding: .3em;
+        cursor: pointer;
+        border-radius: 50px;
+        transition: .3s ease-in-out;
+       }
+  }
+  
