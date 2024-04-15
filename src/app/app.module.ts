@@ -20,7 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { ModalAuthComponent } from './components/modal-auth/modal-auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { heroUsers } from '@ng-icons/heroicons/outline';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import { heroUsers } from '@ng-icons/heroicons/outline';
     HttpClientModule, 
     MatDialogModule,
     BrowserAnimationsModule,
-    FormsModule, ReactiveFormsModule,
+    FormsModule, ReactiveFormsModule, SweetAlert2Module.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
