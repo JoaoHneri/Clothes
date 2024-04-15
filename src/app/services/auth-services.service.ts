@@ -1,16 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, tap, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LoginResponse } from '../interfaces/loginResponse';
 import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthServicesService {
-
-  constructor(private httpClient: HttpClient, private router: Router) {}
-
   private apiUrl = environment.apiUrl;
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
+
+
+  constructor(private httpClient: HttpClient, private router: Router) {
+    this.checkLoginStatus();
+  }
+
+  private checkLoginStatus(): void {
+    const isLoggedIn = sessionStorage.getItem('token') !== null;
+    this.isLoggedInSubject.next(isLoggedIn);
+  }
+
 
   register(formData: FormData): Observable<any> {
     const url = `${this.apiUrl}auth/register`;
@@ -27,8 +37,6 @@ export class AuthServicesService {
 
     return this.httpClient.post(url, body);
   }
-
-
 
   login(formData: FormData): Observable<LoginResponse> {
     const url = `${this.apiUrl}auth/login`;
@@ -47,6 +55,7 @@ export class AuthServicesService {
           sessionStorage.setItem('token', response.token);
           sessionStorage.setItem('userId', response.userId);
           this.router.navigate(['/']);
+          this.isLoggedInSubject.next(true);
         } else {
           alert(response.msg || 'Erro desconhecido ao fazer login');
         }
@@ -57,4 +66,12 @@ export class AuthServicesService {
       })
     );
   }
+
+  logout(): void {
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('userId');
+    this.isLoggedInSubject.next(false);
+    this.router.navigate(['/']);
+  }
+
 }

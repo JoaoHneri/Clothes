@@ -1,23 +1,92 @@
-<div class="shadow-lg p-5 flex flex-col sm:flex-row items-center justify-between text-center">
+<div
+  class="shadow-lg p-5 flex flex-col sm:flex-row items-center justify-between text-center"
+>
   <div class="mb-4 sm:mb-0">LOGO</div>
   <div class="flex justify-between sm:justify-start space-x-10">
     <a href="" class="hover:text-stone-500">Home</a>
     <a href="" class="hover:text-stone-500">Categorias</a>
     <a href="" class="hover:text-stone-500">Sobre Nós</a>
   </div>
-  <div class="dropdown">
-    <button class="dropdown-toggle" (click)="toggleDropdown()">Opções</button>
-    <div class="dropdown-menu" [class.show]="isDropdownOpen">
-      <button class="dropdown-item" (click)="selecionarOpcao('opcao1')">Opção 1</button>
-      <button class="dropdown-item" (click)="selecionarOpcao('opcao2')">Opção 2</button>
-      <button class="dropdown-item" (click)="selecionarOpcao('opcao3')">Opção 3</button>
+
+  <div class="flex">
+    <div class="dropdown mr-4" *ngIf="isLoggedIn">
+      <button class="dropdown-toggle" (click)="toggleDropdown()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#000000"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3" />
+          <circle cx="12" cy="10" r="3" />
+          <circle cx="12" cy="12" r="10" />
+        </svg>
+      </button>
+
+      <div class="dropdown-menu" [class.show]="isDropdownOpen">
+        <button class="dropdown-item">
+          1
+        </button>
+        <button class="dropdown-item">
+          Opção 2
+        </button>
+        <button class="dropdown-item" (click)="logOut()">
+          Sair
+        </button>
+      </div>
     </div>
-  </div>
-  
-  <div>
-    <a mat-raised-button (click)="openModal()">Entrar</a>
-    <a (click)="clickHistory()">Carrinho</a>
+
+
+      <button
+        class="dropdown-toggle mr-4"
+        mat-raised-button
+        (click)="openModal()"
+        *ngIf="!isLoggedIn"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#000000"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3" />
+          <circle cx="12" cy="10" r="3" />
+          <circle cx="12" cy="12" r="10" />
+        </svg>
+      </button>
+
+    <a class="cursor-pointer mr-4" (click)="clickHistory()"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#000000"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="10" cy="20.5" r="1" />
+        <circle cx="18" cy="20.5" r="1" />
+        <path
+          d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"
+        /></svg
+    ></a>
   </div>
 </div>
 <app-carrinho-offcanvas [(isClicked)]="click"></app-carrinho-offcanvas>
-<app-modal-auth *ngIf="showModal" (closeModalEvent)="closeModal()"></app-modal-auth>
+<app-modal-auth
+  *ngIf="showModal"
+  (closeModalEvent)="closeModal()"
+></app-modal-auth>

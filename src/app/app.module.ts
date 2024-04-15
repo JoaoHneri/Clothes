@@ -20,7 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { ModalAuthComponent } from './components/modal-auth/modal-auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatMenuModule} from '@angular/material/menu';
+import { heroUsers } from '@ng-icons/heroicons/outline';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import {MatMenuModule} from '@angular/material/menu';
     HttpClientModule, 
     MatDialogModule,
     BrowserAnimationsModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

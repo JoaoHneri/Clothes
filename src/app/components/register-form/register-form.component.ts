@@ -11,6 +11,7 @@ import { AuthServicesService } from 'src/app/services/auth-services.service';
 export class RegisterFormComponent implements OnInit {
 
   @Output() switchComponent = new EventEmitter<string>();
+  @Output() registerSuccess = new EventEmitter<void>();
   registerForm!: FormGroup;
 
   constructor(private authService: AuthServicesService) { }
@@ -43,7 +44,10 @@ export class RegisterFormComponent implements OnInit {
     formData.append('userEmail', this.userEmail);
     formData.append('userPassword', this.userPassword);
     
-    await this.authService.register(formData).subscribe((data)=> alert("Registrado com sucesso!" + data))
+    await this.authService.register(formData).subscribe(() => {
+      alert("User registration")
+      this.registerSuccess.emit();
+    });
 
 
   }

@@ -1,10 +1,10 @@
 <div class="modal-background" (click)="closeModal()">
     <div class="modal-content">
       <ng-container *ngIf="currentComponent === 'login'">
-        <app-login-form (switchComponent)="switchComponent($event)"></app-login-form>
+        <app-login-form (switchComponent)="switchComponent($event)" (loginSuccess)="closeModal()"></app-login-form>
       </ng-container>
       <ng-container *ngIf="currentComponent === 'register'">
-        <app-register-form (switchComponent)="switchComponent($event)"></app-register-form>
+        <app-register-form (switchComponent)="switchComponent($event)" (registerSuccess)="closeModal()"></app-register-form>
       </ng-container>
     </div>
   </div>

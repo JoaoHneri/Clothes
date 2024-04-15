@@ -11,6 +11,8 @@ export class LoginFormComponent implements OnInit{
 
   @Output() switchToRegisterEvent = new EventEmitter<void>();
   @Output() switchComponent = new EventEmitter<string>();
+  @Output() loginSuccess = new EventEmitter<void>();
+
   loginForm!: FormGroup;
 
   constructor(private authService: AuthServicesService) { }
@@ -35,7 +37,12 @@ export class LoginFormComponent implements OnInit{
     formData.append('userEmail', this.userEmail);
     formData.append('userPassword', this.userPassword);
     
-    await this.authService.login(formData).subscribe((data)=> alert("Logadocom sucesso!" + data))
+    await this.authService.login(formData).subscribe(() => {
+      alert("User Logged")
+      this.loginSuccess.emit(); 
+    });
   }
 
 }
+  
+

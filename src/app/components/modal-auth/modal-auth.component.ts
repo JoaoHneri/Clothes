@@ -8,7 +8,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class ModalAuthComponent implements OnInit {
   @Output() closeModalEvent = new EventEmitter<boolean>();
-
+  
   currentComponent = 'login';
 
   constructor(){

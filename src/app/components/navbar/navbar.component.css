@@ -5,34 +5,40 @@
   }
   
   .dropdown-toggle {
-    background-color: #f8f9fa;
-    border: 1px solid #ced4da;
-    padding: 8px 16px;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Transição suave de cor */
+  }
+  
+  .dropdown-toggle:hover {
+    background-color: #f1f1f1; /* Cor de fundo do botão ao passar o mouse */
   }
   
   .dropdown-menu {
     display: none;
     position: absolute;
-    background-color: #ffffff;
-    min-width: 160px;
+    background-color: #ffffff; /* Cor de fundo do dropdown */
+    min-width: 90px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    border-radius: 4px; /* Borda arredondada */
+    opacity: 0; /* Opacidade inicial */
+    transition: opacity 0.3s; /* Transição suave de opacidade */
+  }
+  
+  .dropdown-menu.show {
+    display: block;
+    opacity: 1; /* Opacidade ao mostrar o dropdown */
   }
   
   .dropdown-item {
-    background-color: #ffffff;
-    color: #333333;
-    padding: 8px 16px;
+    color: #333333; /* Cor do texto do item do dropdown */
+    padding: 10px 12px; /* Espaçamento interno do item do dropdown */
     text-decoration: none;
     display: block;
+    transition: background-color 0.3s; /* Transição suave de cor de fundo */
   }
   
   .dropdown-item:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .show {
-    display: block;
+    background-color: #f1f1f1; /* Cor de fundo do item do dropdown ao passar o mouse */
   }
   

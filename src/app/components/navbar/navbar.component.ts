@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { LoginFormComponent } from '../login-form/login-form.component';
+import { AuthServicesService } from 'src/app/services/auth-services.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,8 +12,10 @@ export class NavbarComponent implements OnInit {
   click = false;
   showModal: boolean = false;
   isDropdownOpen: boolean = false;
+  isLoggedIn?: boolean;
 
-  constructor() {}
+
+  constructor(private authS: AuthServicesService) {}
 
   openModal() {
     this.showModal = true;
@@ -30,13 +33,14 @@ export class NavbarComponent implements OnInit {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
-  selecionarOpcao(opcao: string) {
-    console.log('Opção selecionada:', opcao);
-    // Aqui você pode adicionar a lógica para lidar com a seleção da opção
+  ngOnInit(): void {
+    this.authS.isLoggedIn$.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+    });
   }
 
-  ngOnInit(): void {}
-
-
+  logOut(){
+    this.authS.logout();
+  }
   
 }
