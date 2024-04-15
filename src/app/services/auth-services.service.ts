@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LoginResponse } from '../interfaces/loginResponse';
 import { Router } from '@angular/router';
+import { MessageServiceService } from './message-service.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthServicesService {
@@ -12,7 +13,7 @@ export class AuthServicesService {
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
 
-  constructor(private httpClient: HttpClient, private router: Router) {
+  constructor(private httpClient: HttpClient, private router: Router, private messageS: MessageServiceService) {
     this.checkLoginStatus();
   }
 
@@ -22,7 +23,7 @@ export class AuthServicesService {
   }
 
 
-  register(formData: FormData): Observable<any> {
+  register(formData: FormData): Observable<LoginResponse> {
     const url = `${this.apiUrl}auth/register`;
 
     const userName = formData.get('userName');
@@ -35,7 +36,22 @@ export class AuthServicesService {
       userPassword: userPassword,
     };
 
-    return this.httpClient.post(url, body);
+    return this.httpClient.post<LoginResponse>(url, body).pipe(
+      tap((response) => {
+        if (response.token) {
+          sessionStorage.setItem('token', response.token);
+          sessionStorage.setItem('userId', response.userId);
+          this.messageS.showSuccessMessage("Usuário Registrado com sucesso")
+          this.isLoggedInSubject.next(true);
+        } else {
+          this.messageS.showErrorMessage(response.msg || 'Erro desconhecido ao registrar usuário')
+        }
+      }),
+      catchError((error) => {
+        this.messageS.showErrorMessage('Erro ao fazer registro do usuário. Por favor, tente novamente mais tarde.')
+        return throwError(error);
+      })
+    );
   }
 
   login(formData: FormData): Observable<LoginResponse> {
@@ -54,24 +70,30 @@ export class AuthServicesService {
         if (response.token) {
           sessionStorage.setItem('token', response.token);
           sessionStorage.setItem('userId', response.userId);
-          this.router.navigate(['/']);
+          this.messageS.showSuccessMessage("Usuário logado com sucesso")
           this.isLoggedInSubject.next(true);
         } else {
-          alert(response.msg || 'Erro desconhecido ao fazer login');
+          this.messageS.showErrorMessage(response.msg || 'Erro desconhecido ao fazer login')
         }
       }),
       catchError((error) => {
-        alert('Erro ao fazer login. Por favor, tente novamente mais tarde.');
+        this.messageS.showErrorMessage('Erro ao fazer login. Por favor, tente novamente mais tarde.')
         return throwError(error);
       })
     );
   }
 
   logout(): void {
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('userId');
-    this.isLoggedInSubject.next(false);
-    this.router.navigate(['/']);
+
+    this.messageS.showConfirmationMessage("Deseja realmente sair?").then((confirmed: boolean) => {
+      if (confirmed) {
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('userId');
+        this.isLoggedInSubject.next(false);
+        this.messageS.showSuccessMessage("Usuário Deslogado.");
+      }
+    });
   }
+  
 
 }

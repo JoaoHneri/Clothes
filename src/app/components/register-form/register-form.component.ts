@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
+import { MessageServiceService } from 'src/app/services/message-service.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class RegisterFormComponent implements OnInit {
   @Output() registerSuccess = new EventEmitter<void>();
   registerForm!: FormGroup;
 
-  constructor(private authService: AuthServicesService) { }
+  constructor(private authService: AuthServicesService, private messageS: MessageServiceService) { }
 
   
   ngOnInit(): void {
@@ -45,7 +46,7 @@ export class RegisterFormComponent implements OnInit {
     formData.append('userPassword', this.userPassword);
     
     await this.authService.register(formData).subscribe(() => {
-      alert("User registration")
+      this.messageS.showSuccessMessage("Usuário registrado com sucesso")
       this.registerSuccess.emit();
     });
 

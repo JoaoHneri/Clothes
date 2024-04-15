@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
+import { MessageServiceService } from 'src/app/services/message-service.service';
 
 @Component({
   selector: 'app-login-form',
@@ -15,7 +16,7 @@ export class LoginFormComponent implements OnInit{
 
   loginForm!: FormGroup;
 
-  constructor(private authService: AuthServicesService) { }
+  constructor(private authService: AuthServicesService, private messageS: MessageServiceService) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -38,7 +39,6 @@ export class LoginFormComponent implements OnInit{
     formData.append('userPassword', this.userPassword);
     
     await this.authService.login(formData).subscribe(() => {
-      alert("User Logged")
       this.loginSuccess.emit(); 
     });
   }
