@@ -5,6 +5,15 @@
     <a href="" class="hover:text-stone-500">Categorias</a>
     <a href="" class="hover:text-stone-500">Sobre Nós</a>
   </div>
+  <div class="dropdown">
+    <button class="dropdown-toggle" (click)="toggleDropdown()">Opções</button>
+    <div class="dropdown-menu" [class.show]="isDropdownOpen">
+      <button class="dropdown-item" (click)="selecionarOpcao('opcao1')">Opção 1</button>
+      <button class="dropdown-item" (click)="selecionarOpcao('opcao2')">Opção 2</button>
+      <button class="dropdown-item" (click)="selecionarOpcao('opcao3')">Opção 3</button>
+    </div>
+  </div>
+  
   <div>
     <a mat-raised-button (click)="openModal()">Entrar</a>
     <a (click)="clickHistory()">Carrinho</a>

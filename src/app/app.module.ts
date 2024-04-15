@@ -19,6 +19,8 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { ModalAuthComponent } from './components/modal-auth/modal-auth.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { ModalAuthComponent } from './components/modal-auth/modal-auth.component
     AppRoutingModule,
     HttpClientModule, 
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -8,3 +8,12 @@
     box-sizing: border-box;
     font-family: Poppins, Arial, Helvetica, sans-serif;
 }
+
+.validation-error p {
+    color: #DC3545;
+    margin-top: .2em;
+    padding: .2em;
+    border-left: 3px solid #DC3545;
+    font-size: .7em;
+  }
+  

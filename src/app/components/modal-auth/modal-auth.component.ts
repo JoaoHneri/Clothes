@@ -20,6 +20,7 @@ export class ModalAuthComponent implements OnInit {
   switchComponent(componentName: string) {
     this.currentComponent = componentName;
   }
+  
   closeModal() {
     this.closeModalEvent.emit(true);
   }

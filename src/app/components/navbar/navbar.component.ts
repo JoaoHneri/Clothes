@@ -10,7 +10,8 @@ import { LoginFormComponent } from '../login-form/login-form.component';
 export class NavbarComponent implements OnInit {
   click = false;
   showModal: boolean = false;
-  
+  isDropdownOpen: boolean = false;
+
   constructor() {}
 
   openModal() {
@@ -25,6 +26,14 @@ export class NavbarComponent implements OnInit {
   }
   
 
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  selecionarOpcao(opcao: string) {
+    console.log('Opção selecionada:', opcao);
+    // Aqui você pode adicionar a lógica para lidar com a seleção da opção
+  }
 
   ngOnInit(): void {}
 

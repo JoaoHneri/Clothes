@@ -1,10 +1,12 @@
 <div class="form-container" (click)="$event.stopPropagation()">
   <p class="title">Log in</p>
   <p class="sub-title">Log in to your account</p>
-  <form class="form" (click)="$event.stopPropagation()">
-    <input type="email" class="input" placeholder="Email" />
-    <input type="password" class="input" placeholder="Password" />
-    <button class="form-btn">Log in</button>
+  <form class="form" (click)="$event.stopPropagation()" [formGroup]="loginForm" #formDir="ngForm">
+    <input type="email" class="input" placeholder="Email" formControlName="userEmail"  (click)="$event.stopPropagation()" (select)="$event.stopPropagation()"/>
+    <div *ngIf="loginForm.get('userEmail')?.hasError('required') && loginForm.get('userEmail')?.touched" class="validation-error"><p>Nome é obrigatório</p></div>
+    <input type="password" class="input" placeholder="Password"  formControlName="userPassword" (click)="$event.stopPropagation()" (select)="$event.stopPropagation()"/>
+    <div *ngIf="loginForm.get('userPassword')?.hasError('required') && loginForm.get('userPassword')?.touched" class="validation-error"><p>Senha é obrigatória</p></div>
+    <button class="form-btn" (click)="login()">Log in</button>
   </form>
   <p class="sign-up-label">
     Don't have an account yet?
