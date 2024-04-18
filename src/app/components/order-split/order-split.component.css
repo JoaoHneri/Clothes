@@ -1,0 +1,37 @@
+.orders{
+        display: flex;
+        flex-direction: column;
+        background-color: #ffffff;
+        width: 100%;
+}
+
+.searchOrder{
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+}
+
+.textInto {
+    padding: 1em; width: min-content;
+}
+
+.textInto h1{
+        font-size: 1.4em;
+        font-weight: bold;
+        border-bottom: 2px solid #2ba8fb;
+        
+}
+.InputS{
+        padding: 0em 1em;   
+        margin-bottom: 10px;
+}
+
+
+.oderdsCard{
+        background-color: #ffffff;
+        width: 100%;
+        padding: 1em 2em;
+        margin-top: 20px;
+        margin-bottom: 50px;
+}

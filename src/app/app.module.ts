@@ -21,6 +21,10 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { ModalAuthComponent } from './components/modal-auth/modal-auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { MyAccountComponent } from './pages/my-account/my-account.component';
+import { OverviewComponent } from './components/overview/overview.component';
+import { OrderCardComponent } from './components/order-card/order-card.component';
+import { OrderSplitComponent } from './components/order-split/order-split.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +42,10 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     LoginFormComponent,
     RegisterFormComponent,
     ModalAuthComponent,
+    MyAccountComponent,
+    OverviewComponent,
+    OrderCardComponent,
+    OrderSplitComponent,
   ],
   imports: [
     BrowserModule,

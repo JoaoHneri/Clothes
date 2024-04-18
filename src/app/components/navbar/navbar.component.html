@@ -9,7 +9,7 @@
   </div>
 
   <div class="flex">
-    <div class="dropdown mr-4" *ngIf="isLoggedIn">
+    <div class="dropdown mr-8" *ngIf="isLoggedIn">
       <button class="dropdown-toggle" (click)="toggleDropdown()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -29,11 +29,8 @@
       </button>
 
       <div class="dropdown-menu" [class.show]="isDropdownOpen">
-        <button class="dropdown-item">
-          1
-        </button>
-        <button class="dropdown-item">
-          Opção 2
+        <button class="dropdown-item" routerLink="account/{{userId}}">
+          Minha conta
         </button>
         <button class="dropdown-item" (click)="logOut()">
           Sair
@@ -43,7 +40,7 @@
 
 
       <button
-        class="dropdown-toggle mr-4"
+        class="dropdown-toggle mr-8"
         mat-raised-button
         (click)="openModal()"
         *ngIf="!isLoggedIn"
@@ -65,7 +62,7 @@
         </svg>
       </button>
 
-    <a class="cursor-pointer mr-4" (click)="clickHistory()"
+    <a class="cursor-pointer mr-8" (click)="clickHistory()"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

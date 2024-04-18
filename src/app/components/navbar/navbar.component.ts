@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   showModal: boolean = false;
   isDropdownOpen: boolean = false;
   isLoggedIn?: boolean;
+  userId:  string | null = null;
 
 
   constructor(private authS: AuthServicesService) {}
@@ -36,6 +37,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.authS.isLoggedIn$.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
+    });
+
+    this.authS.userId$.subscribe((userId) => {
+      this.userId = userId;
     });
   }
 

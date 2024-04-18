@@ -12,6 +12,9 @@ export class AuthServicesService {
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
+  private userIdSubject = new BehaviorSubject<string | null>(null);
+  userId$ = this.userIdSubject.asObservable();
+
 
   constructor(private httpClient: HttpClient, private router: Router, private messageS: MessageServiceService) {
     this.checkLoginStatus();
@@ -41,6 +44,7 @@ export class AuthServicesService {
         if (response.token) {
           sessionStorage.setItem('token', response.token);
           sessionStorage.setItem('userId', response.userId);
+          this.setUserId(response.userId)
           this.messageS.showSuccessMessage("Usuário Registrado com sucesso")
           this.isLoggedInSubject.next(true);
         } else {
@@ -70,6 +74,7 @@ export class AuthServicesService {
         if (response.token) {
           sessionStorage.setItem('token', response.token);
           sessionStorage.setItem('userId', response.userId);
+          this.setUserId(response.userId)
           this.messageS.showSuccessMessage("Usuário logado com sucesso")
           this.isLoggedInSubject.next(true);
         } else {
@@ -77,7 +82,7 @@ export class AuthServicesService {
         }
       }),
       catchError((error) => {
-        this.messageS.showErrorMessage('Erro ao fazer login. Por favor, tente novamente mais tarde.')
+        this.messageS.showErrorMessage(error.error.msg || 'Erro ao fazer login. Por favor, tente novamente mais tarde.')
         return throwError(error);
       })
     );
@@ -91,8 +96,14 @@ export class AuthServicesService {
         sessionStorage.removeItem('userId');
         this.isLoggedInSubject.next(false);
         this.messageS.showSuccessMessage("Usuário Deslogado.");
+        this.setUserId(null)
       }
     });
+  }
+
+
+  setUserId(userId: string | null) {
+    this.userIdSubject.next(userId);
   }
   
 

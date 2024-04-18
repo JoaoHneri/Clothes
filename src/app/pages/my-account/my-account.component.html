@@ -1,0 +1,26 @@
+<div class="account-content">
+  <div class="content-formed">
+    <div class="sideMenu">
+        <h1>Minha Conta</h1>
+        <div class="optSide">
+          <button (click)="showComponent('overview')">Visão Geral</button>
+        </div>
+        <div class="optSide">
+          <button (click)="showComponent('orders')">Pedidos</button>
+        </div>
+        <div class="optSide">
+          <button>Pagamento</button>
+        </div>
+        <div class="optSide">
+          <button>Reembolso</button>
+        </div>
+        <div class="optSide">
+            <button>Endereço de entrega</button>
+        </div>
+      </div>
+      <div class="contentOptions">
+        <app-overview *ngIf="component === 'overview' "></app-overview>
+        <app-order-split *ngIf="component === 'orders' "></app-order-split>
+      </div>
+  </div>
+</div>

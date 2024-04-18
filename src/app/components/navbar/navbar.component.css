@@ -17,7 +17,8 @@
     display: none;
     position: absolute;
     background-color: #ffffff; /* Cor de fundo do dropdown */
-    min-width: 90px;
+    min-width: 100px;
+    max-width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     border-radius: 4px; /* Borda arredondada */
@@ -36,6 +37,7 @@
     text-decoration: none;
     display: block;
     transition: background-color 0.3s; /* Transição suave de cor de fundo */
+    font-size: .8em;
   }
   
   .dropdown-item:hover {
