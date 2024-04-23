@@ -23,4 +23,9 @@ export class ProdutosService {
     const Url = `${this.ApiUrl}products`
     return this.http.get<Product>(Url);
   }
+
+  getProdutoPorId(idProd: String): Observable<Product>{
+    const Url = `${this.ApiUrl}products/${idProd}`
+    return this.http.get<Product>(Url);
+  }
 }

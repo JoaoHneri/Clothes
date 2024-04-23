@@ -9,24 +9,22 @@ import { MessageServiceService } from './message-service.service';
 @Injectable({ providedIn: 'root' })
 export class AuthServicesService {
   private apiUrl = environment.apiUrl;
-  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
-  isLoggedIn$ = this.isLoggedInSubject.asObservable();
-
-  private userIdSubject = new BehaviorSubject<string | null>(null);
-  userId$ = this.userIdSubject.asObservable();
-
   private usuario!: String;
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
 
 
   constructor(private httpClient: HttpClient, private router: Router, private messageS: MessageServiceService) {
-    this.checkLoginStatus();
+    this.checkAuthentication();
   }
 
-  private checkLoginStatus(): void {
-    const isLoggedIn = sessionStorage.getItem('token') !== null;
-    this.isLoggedInSubject.next(isLoggedIn);
+  private checkAuthentication(): void {
+    const isAuthenticated = !!sessionStorage.getItem('token');
+    this.isAuthenticatedSubject.next(isAuthenticated);
   }
 
+  isAuthenticated$() {
+    return this.isAuthenticatedSubject.asObservable();
+  }
 
   register(formData: FormData): Observable<LoginResponse> {
     const url = `${this.apiUrl}auth/register`;
@@ -46,9 +44,9 @@ export class AuthServicesService {
         if (response.token) {
           sessionStorage.setItem('token', response.token);
           sessionStorage.setItem('userId', response.userId);
-          this.setUserId(response.userId)
+          this.isAuthenticatedSubject.next(true);
           this.messageS.showSuccessMessage("Usuário Registrado com sucesso")
-          this.isLoggedInSubject.next(true);
+          window.location.reload();
         } else {
           this.messageS.showErrorMessage(response.msg || 'Erro desconhecido ao registrar usuário')
         }
@@ -76,9 +74,9 @@ export class AuthServicesService {
         if (response.token) {
           sessionStorage.setItem('token', response.token);
           sessionStorage.setItem('userId', response.userId);
-          this.setUserId(response.userId)
+          this.isAuthenticatedSubject.next(true);
           this.messageS.showSuccessMessage("Usuário logado com sucesso")
-          this.isLoggedInSubject.next(true);
+          window.location.reload();
         } else {
           this.messageS.showErrorMessage(response.msg || 'Erro desconhecido ao fazer login')
         }
@@ -96,21 +94,21 @@ export class AuthServicesService {
       if (confirmed) {
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('userId');
-        this.isLoggedInSubject.next(false);
         this.messageS.showSuccessMessage("Usuário Deslogado.");
-        this.setUserId(null)
+        this.isAuthenticatedSubject.next(false);
+        window.location.reload();
       }
     });
   }
 
 
-  setUserId(userId: string | null) {
-    this.userIdSubject.next(userId);
-    this.usuario = String(userId);
+  checkUserId(){
+    if(sessionStorage.getItem('userId')){
+      return sessionStorage.getItem('userId');
+    }else{
+      return null;
+    }
   }
-  
-  getUsuario() {
-    return this.usuario;
-  }
+
 
 }

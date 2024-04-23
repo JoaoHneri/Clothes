@@ -1,22 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { LoginFormComponent } from '../login-form/login-form.component';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
+import { CarrinhoOffcanvasComponent } from '../carrinho-offcanvas/carrinho-offcanvas.component';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnChanges {
   click = false;
   showModal: boolean = false;
   isDropdownOpen: boolean = false;
-  isLoggedIn?: boolean;
-  userId:  string | null = null;
-
+  isAuthenticated = false;
+  userId = this.authS.checkUserId();
+  private CarrinhoOffcanvasComponet!: CarrinhoOffcanvasComponent;
 
   constructor(private authS: AuthServicesService) {}
+
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.userId = this.authS.checkUserId();
+  }
 
   openModal() {
     this.showModal = true;
@@ -35,12 +41,8 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authS.isLoggedIn$.subscribe(isLoggedIn => {
-      this.isLoggedIn = isLoggedIn;
-    });
-
-    this.authS.userId$.subscribe((userId) => {
-      this.userId = userId;
+    this.authS.isAuthenticated$().subscribe(isAuthenticated => {
+      this.isAuthenticated = isAuthenticated;
     });
   }
 

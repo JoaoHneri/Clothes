@@ -19,19 +19,19 @@ export class ProductCardComponent implements OnInit {
   route: String = environment.apiUrl
 
 
-  isLoggedIn?: boolean;
+  isAuthenticated= false;
 
   constructor(private authS: AuthServicesService, private messageS: MessageServiceService, private CartS: CartServiceService) { }
   
   ngOnInit(): void {
-    this.authS.isLoggedIn$.subscribe(isLoggedIn => {
-      this.isLoggedIn = isLoggedIn;
+    this.authS.isAuthenticated$().subscribe(isAuthenticated => {
+      this.isAuthenticated = isAuthenticated;
     });
   }
 
   addCart(){
-    if(this.isLoggedIn){
-      const userId = this.authS.getUsuario();
+    if(this.isAuthenticated){
+      const userId = String(this.authS.checkUserId()) ;
       this.CartS.addCart(userId, this.id).subscribe()
     }else{
       this.messageS.showErrorMessage('Logue primeiro para adicionar itens ao carrinho');

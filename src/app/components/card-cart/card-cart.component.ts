@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { AuthServicesService } from 'src/app/services/auth-services.service';
+import { ProdutosService } from 'src/app/services/produtos.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-card-cart',
@@ -7,10 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardCartComponent implements OnInit {
   quantity: number = 1;
-  price: number = 10; // Altere para o preço real do produto
-  constructor() { }
+  price: number = 1;
+  src!: string;
+  route = environment.apiUrl;
+  productName!: string;
+  totalPrice: number = this.price * this.quantity;
+
+  @Input() prodId!: string;
+
+  constructor(private prodS: ProdutosService) { }
 
   ngOnInit(): void {
+    this.prodS.getProdutoPorId(this.prodId).subscribe((item)=>{
+      this.price = item.productPrice;
+      this.src = item.src;
+      this.productName = item.productName;
+    })
   }
 
 

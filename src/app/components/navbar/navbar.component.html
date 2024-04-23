@@ -9,7 +9,7 @@
   </div>
 
   <div class="flex">
-    <div class="dropdown mr-8" *ngIf="isLoggedIn">
+    <div class="dropdown mr-8" *ngIf="isAuthenticated">
       <button class="dropdown-toggle" (click)="toggleDropdown()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@
         class="dropdown-toggle mr-8"
         mat-raised-button
         (click)="openModal()"
-        *ngIf="!isLoggedIn"
+        *ngIf="!isAuthenticated"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

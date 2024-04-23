@@ -5,4 +5,5 @@ export interface Product {
     productCategory: string;
     productDescription: string;
     productQuantity: number;
+    src: string;
   }

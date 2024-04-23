@@ -1,16 +1,16 @@
 <div class="card">
   <div class="img-container">
     <img
-      src="http://localhost:3334/uploads/1713898355484-WhatsApp%20Image%202024-04-09%20at%2022.27.52.jpeg"
+      src="{{route}}{{src}}"
       alt="Prod"
     />
   </div>
 
   <div class="content">
-    <div class="title">Product Title</div>
+    <div class="title"><p>{{productName}}</p></div>
 
-    <div class="price">Price: ${{ price }}</div>
-    <div class="total">Total: ${{ price * quantity }}</div>
+    <div class="price"><p>Price: ${{ price }}</p></div>
+    <div class="total"><p>Total: ${{ price * quantity }}</p></div>
 
     <div class="quantity">
       <button class="quantity-btn" (click)="decreaseQuantity()">-</button>
