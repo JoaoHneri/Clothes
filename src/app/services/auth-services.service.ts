@@ -15,6 +15,8 @@ export class AuthServicesService {
   private userIdSubject = new BehaviorSubject<string | null>(null);
   userId$ = this.userIdSubject.asObservable();
 
+  private usuario!: String;
+
 
   constructor(private httpClient: HttpClient, private router: Router, private messageS: MessageServiceService) {
     this.checkLoginStatus();
@@ -104,7 +106,11 @@ export class AuthServicesService {
 
   setUserId(userId: string | null) {
     this.userIdSubject.next(userId);
+    this.usuario = String(userId);
   }
   
+  getUsuario() {
+    return this.usuario;
+  }
 
 }

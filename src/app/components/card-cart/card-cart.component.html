@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="img-container">
+    <img
+      src="http://localhost:3334/uploads/1713898355484-WhatsApp%20Image%202024-04-09%20at%2022.27.52.jpeg"
+      alt="Prod"
+    />
+  </div>
+
+  <div class="content">
+    <div class="title">Product Title</div>
+
+    <div class="price">Price: ${{ price }}</div>
+    <div class="total">Total: ${{ price * quantity }}</div>
+
+    <div class="quantity">
+      <button class="quantity-btn" (click)="decreaseQuantity()">-</button>
+      <span>{{ quantity }}</span>
+      <button class="quantity-btn" (click)="increaseQuantity()">+</button>
+    </div>    
+  </div>
+</div>

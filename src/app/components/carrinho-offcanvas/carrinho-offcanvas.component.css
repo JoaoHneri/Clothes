@@ -38,6 +38,22 @@
     z-index: 2;
   }
 
+  .data-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 
+  .title{
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
   
-  
+
+  .cards{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+  }

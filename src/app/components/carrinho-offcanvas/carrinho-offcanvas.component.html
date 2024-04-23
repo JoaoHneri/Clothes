@@ -1,12 +1,17 @@
-
-
 <div class="off-canvas" [class.open]="isClicked">
-    <button class="close-button" (click)="closeOffCanvas()">&times;</button>
-    <ng-container *ngIf="isClicked">
-      <div class="off-canvas-content">
-          <div class="data-container">
-              <h1>Carrinho</h1>
-            </div>
+  <button class="close-button" (click)="closeOffCanvas()">&times;</button>
+  <ng-container *ngIf="isClicked">
+    <div class="off-canvas-content">
+      <div class="data-container">
+        <div class="title">
+          <h1>Carrinho</h1>
+        </div>
+        <div class="cards">
+          <app-card-cart></app-card-cart>
+          <app-card-cart></app-card-cart>
+          <app-card-cart></app-card-cart>
+        </div>
       </div>
-    </ng-container>
-  </div>
+    </div>
+  </ng-container>
+</div>
