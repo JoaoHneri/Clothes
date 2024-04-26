@@ -7,7 +7,13 @@
           <h1>Carrinho</h1>
         </div>
         <div class="cards">
-          <app-card-cart *ngFor="let item of cartProducts" prodId="{{item.idProd}}"></app-card-cart>
+          <app-card-cart *ngFor="let item of cartProducts" [prodId]="item.idProd" (totalPriceChange)="updateTotalPrice($event )"></app-card-cart>
+        </div>
+        <div class="progress">
+          <div class="card-progress">
+            <h1>Total: {{ cartTotal }}</h1> <!-- Exibir o total do carrinho -->
+            <button>Prosseguir</button>
+          </div>
         </div>
       </div>
     </div>

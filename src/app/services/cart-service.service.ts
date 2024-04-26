@@ -42,7 +42,7 @@ export class CartServiceService {
 
   getCart(user_id: string): Observable<CartItemResponse> {
     // Verificar se user_id é válido
-    if (!user_id) {
+    if (user_id === "null") {
       // Retorna um Observable vazio, já que o user_id não está disponível
       return EMPTY;
     }
