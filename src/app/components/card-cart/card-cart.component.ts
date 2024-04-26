@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
 import { ProdutosService } from 'src/app/services/produtos.service';
 import { environment } from 'src/environments/environment';
+import { TotalPrice } from 'src/app/interfaces/TotalPrice';
 
 @Component({
   selector: 'app-card-cart',
@@ -17,7 +18,7 @@ export class CardCartComponent implements OnInit {
   totalPrice: number = 0; // Initialize totalPrice
   
   @Input() prodId!: string;
-  @Output() totalPriceChange: EventEmitter<number> = new EventEmitter<number>();
+  @Output() totalPriceChange: EventEmitter<TotalPrice> = new EventEmitter<TotalPrice>();
 
   constructor(private prodS: ProdutosService) { }
 
@@ -26,26 +27,25 @@ export class CardCartComponent implements OnInit {
       this.price = item.productPrice;
       this.src = item.src;
       this.productName = item.productName;
-      this.calculateTotalPrice(); // Calculate totalPrice initially
+      this.calculateTotalPrice(true); // Calculate totalPrice initially
     })
   }
 
-  calculateTotalPrice() {
-    this.totalPrice = this.quantity * this.price; // Calcula o novo preço total com base na nova quantidade
-    this.totalPriceChange.emit(this.totalPrice); // Emite o novo preço total para o componente pai
-  }
-  
-
   increaseQuantity() {
     this.quantity++;
-    this.calculateTotalPrice(); 
+    this.calculateTotalPrice(true); // Passa true para indicar um incremento
   }
-
+  
   decreaseQuantity() {
-    if (this.quantity > 1) {
-      this.quantity--; // Diminui a quantidade apenas se for maior que 1
-      this.calculateTotalPrice(); // Recalcula o preço total após a diminuição da quantidade
+    if (this.quantity >= 1) {
+      this.quantity--;
+      this.calculateTotalPrice(false); // Passa false para indicar um decremento
     }
   }
   
+  calculateTotalPrice(isIncrement: boolean) {
+    this.totalPrice = this.quantity * this.price;
+    this.totalPriceChange.emit({ totalPrice: this.totalPrice, isIncrement: isIncrement });
+    console.log("Total Price component "+ this.totalPrice)
+  }
 }

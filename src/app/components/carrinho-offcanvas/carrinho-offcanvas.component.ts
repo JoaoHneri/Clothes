@@ -8,6 +8,7 @@ import { CartServiceService } from 'src/app/services/cart-service.service';
   templateUrl: './carrinho-offcanvas.component.html',
   styleUrls: ['./carrinho-offcanvas.component.css'],
 })
+
 export class CarrinhoOffcanvasComponent implements OnInit, OnChanges {
   @Input() isClicked = false;
   @Output() isClickedChange = new EventEmitter<boolean>();
@@ -52,12 +53,27 @@ export class CarrinhoOffcanvasComponent implements OnInit, OnChanges {
     this.cartTotal = 0;
     if (this.cartProducts) { 
       for (const item of this.cartProducts) {
+        console.log("Item Cartoproa" + JSON.stringify(item.totalPrice));
         this.cartTotal += item.totalPrice || 0; 
       }
     }
   }
 
-  updateTotalPrice(totalPrice: number) {
-    this.cartTotal += totalPrice; 
+  updateTotalPrice(eventData: { totalPrice: number, isIncrement: boolean }, i: number) {
+    const totalPrice = eventData.totalPrice;
+    const isIncrement = eventData.isIncrement;
+  
+    if (isIncrement) {
+      this.cartTotal += totalPrice; // Adiciona o totalPrice ao cartTotal
+    } else {
+      this.cartTotal -= totalPrice; // Subtrai o totalPrice do cartTotal
+    }
+  
+    // Atualiza apenas o cartTotal correspondente ao item do carrinho modificado
+    console.log(`Valor total do carrinho para o item ${i}: ${this.cartTotal}`);
   }
+  
+  
+  
+  
 }
