@@ -1,21 +1,21 @@
 <div class="card">
   <div class="img-container">
     <img
-      src="{{route}}{{src}}"
+      src="{{route}}{{item.src}}"
       alt="Prod"
     />
   </div>
 
   <div class="content">
-    <div class="title"><p>{{productName}}</p></div>
+    <div class="title"><p>{{item.productName}}</p></div>
 
-    <div class="price"><p>Price: ${{ price }}</p></div>
-    <div class="total"><p>Total: ${{ price * quantity }}</p></div>
+    <div class="price"><p>Price: ${{ productPrice}}</p></div>
+    <div class="total"><p>Total: ${{ productPrice * quantity }}</p></div>
 
     <div class="quantity">
-      <button class="quantity-btn" (click)="decreaseQuantity()">-</button>
+      <button class="quantity-btn" >-</button>
       <span>{{ quantity }}</span>
-      <button class="quantity-btn" (click)="increaseQuantity()">+</button>
+      <button class="quantity-btn">+</button>
     </div>    
   </div>
 </div>

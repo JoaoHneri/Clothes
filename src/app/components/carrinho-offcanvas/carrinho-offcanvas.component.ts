@@ -27,7 +27,7 @@ export class CarrinhoOffcanvasComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-    this.getUserCart();
+
   }
 
   toggleOffCanvas() {
@@ -44,36 +44,13 @@ export class CarrinhoOffcanvasComponent implements OnInit, OnChanges {
     const userId = String(this.authS.checkUserId());
     this.cartS.getCart(userId).subscribe((cart) => {
       this.cartProducts = cart;
-      this.calculateCartTotal();
+      for(let carts of this.cartProducts){
+          this.cartTotal+= carts.productPrice;
+      }
       this.userCartLoaded.emit(cart);
     });
   }
 
-  calculateCartTotal() {
-    this.cartTotal = 0;
-    if (this.cartProducts) { 
-      for (const item of this.cartProducts) {
-        console.log("Item Cartoproa" + JSON.stringify(item.totalPrice));
-        this.cartTotal += item.totalPrice || 0; 
-      }
-    }
-  }
-
-  updateTotalPrice(eventData: { totalPrice: number, isIncrement: boolean }, i: number) {
-    const totalPrice = eventData.totalPrice;
-    const isIncrement = eventData.isIncrement;
-  
-    if (isIncrement) {
-      this.cartTotal += totalPrice; // Adiciona o totalPrice ao cartTotal
-    } else {
-      this.cartTotal -= totalPrice; // Subtrai o totalPrice do cartTotal
-    }
-  
-    // Atualiza apenas o cartTotal correspondente ao item do carrinho modificado
-    console.log(`Valor total do carrinho para o item ${i}: ${this.cartTotal}`);
-  }
-  
-  
   
   
 }
