@@ -1,10 +1,6 @@
-import { Component, Input, OnInit, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { AuthServicesService } from 'src/app/services/auth-services.service';
-import { ProdutosService } from 'src/app/services/produtos.service';
-import { environment } from 'src/environments/environment';
-import { TotalPrice } from 'src/app/interfaces/TotalPrice';
-import { CartItemResponse } from 'src/app/interfaces/cartItemResponse';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-card-cart',
@@ -13,19 +9,16 @@ import { Product } from 'src/app/interfaces/product';
 })
 export class CardCartComponent implements OnInit {
   @Input() item!: Product;
+  @Output() productPriceEmitter = new EventEmitter<number>(); // Novo evento de saída
   route: string = environment.apiUrl;
-  productPrice!: number;
-  quantity: number = 1;
 
-  constructor(private prodS: ProdutosService) { }
-
+  constructor() {}
 
   ngOnInit(): void {
-    this.productPrice = this.item.productPrice;
-    }
-
-
+    this.emitProductPrice(); // Chamar a função para emitir o preço do produto
   }
   
-
-
+  emitProductPrice() {
+    this.productPriceEmitter.emit(this.item.productPrice); // Emitir o preço do produto
+  }
+}

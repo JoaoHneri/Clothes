@@ -26,6 +26,7 @@ import { OverviewComponent } from './components/overview/overview.component';
 import { OrderCardComponent } from './components/order-card/order-card.component';
 import { OrderSplitComponent } from './components/order-split/order-split.component';
 import { CardCartComponent } from './components/card-cart/card-cart.component';
+import { ProductInfoComponent } from './pages/product-info/product-info.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { CardCartComponent } from './components/card-cart/card-cart.component';
     OrderCardComponent,
     OrderSplitComponent,
     CardCartComponent,
+    ProductInfoComponent,
   ],
   imports: [
     BrowserModule,

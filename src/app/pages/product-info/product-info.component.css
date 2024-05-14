@@ -1,0 +1,112 @@
+.container {
+    margin-top: 20px;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-img-top {
+    width: 100%;
+    height: auto;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .tamanho-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .preco-text {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .btn-adicionar {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-adicionar:hover {
+    background-color: #0056b3;
+  }
+  
+
+
+  .btn-quantidade {
+    color: #4B5563;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: aliceblue;
+    padding: .5em 1em;
+    border-radius: 50%;
+  }
+  
+  .btn-quantidade:hover {
+    background-color: #007bff;
+    color: #ffff;
+        
+  }
+    
+  
+  .selected {
+    border: 2px solid #007bff;
+    color: #000000;
+  }
+
+
+  .shipping-info {
+    background-color: #f7f8fa;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px; /* Ajuste a largura conforme necessário */
+    margin-top: 20px;
+  }
+  
+  .shipping-info p {
+    margin: 10px 0;
+  }
+  
+  .shipping-info a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .shipping-info a:hover {
+    text-decoration: underline;
+  }
+  
+  

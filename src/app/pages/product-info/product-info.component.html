@@ -1,0 +1,43 @@
+<div class="container mx-auto px-4 py-8">
+    <div class="flex flex-wrap -mx-4">
+      <div class="w-full md:w-1/2 px-4">
+        <div class="bg-white rounded-lg shadow-md">
+          <img class="w-full h-auto" src="../../../assets/Images/Moda Masculina.png" alt="{{ produto.titulo }}">
+        </div>
+      </div>
+      <div class="w-full md:w-1/2 px-4">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-xl font-semibold mb-4">{{ produto.titulo }}</h2>
+          <p class="text-base text-gray-700 mb-4">{{ produto.descricao }}</p>
+          <p class="text-lg font-bold text-black-600 mb-4">R$ {{ produto.preco }}</p>
+          <div class="mb-4">
+            <label class="block text-sm font-semibold mb-2">Tamanho:</label>
+            <div class="flex items-center space-x-4">
+              <ng-container *ngFor="let tamanho of produto.tamanhos">
+                <input type="radio" [id]="tamanho" name="tamanho" [value]="tamanho" class="sr-only">
+                <label [for]="tamanho" class="radio-label cursor-pointer border border-gray-400 rounded-md px-4 py-2" [class.selected]="produto.tamanho === tamanho" (click)="produto.tamanho = tamanho">{{ tamanho }}</label>
+              </ng-container>
+            </div>
+          </div>          
+          <div class="mb-4">
+            <label class="block text-sm font-semibold mb-2">Quantidade:</label>
+            <div class="flex items-center">
+              <button class="btn-quantidade" (click)="decrementarQuantidade()">-</button>
+              <p id="quantidade" class="w-16 py-2 px-4 text-center">{{produto.quantidade}}</p>
+              <button class="btn-quantidade" (click)="incrementarQuantidade()">+</button>
+            </div>
+          </div>
+          <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" (click)="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
+          <div class="shipping-info">
+            <p>Envio Nacional</p>
+            <p>Enviando Para Brazil</p>
+            <p>Frete grátis em pedidos acima de R$69,00</p>
+            <p>Devoluções Gratuitas</p>
+            <p><a href="#">Saiba mais</a></p>
+            <p>Segurança de compras</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

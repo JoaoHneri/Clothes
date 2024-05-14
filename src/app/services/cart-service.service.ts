@@ -15,7 +15,6 @@ export class CartServiceService {
     // Defina os dados a serem enviados no corpo da solicitação
     const data = { idProd };
 
-
     return this.httpClient
       .post<CartItemResponse>(`http://localhost:3334/cart/${user_id}`, data)
       .pipe(
@@ -42,15 +41,45 @@ export class CartServiceService {
 
   getCart(user_id: string): Observable<CartItemResponse> {
     // Verificar se user_id é válido
-    if (user_id === "null") {
+    if (user_id === 'null') {
       // Retorna um Observable vazio, já que o user_id não está disponível
       return EMPTY;
     }
-    
+
     // Caso contrário, fazer a chamada HTTP para recuperar o carrinho do usuário
     return this.httpClient.get<CartItemResponse>(
       `http://localhost:3334/cart/${user_id}`
     );
   }
+
+
+  
+
+  deleteItemCart(user_id: string, cart_id: string): Observable<any> {
+    
+    return this.httpClient
+      .delete<any>(`http://localhost:3334/cart/${user_id}/${cart_id}`)
+      .pipe(
+        tap((response) => {
+          if (response) {
+            this.messageS.showSuccessMessage('Item removido do carrinho');
+          } else {
+            this.messageS.showErrorMessage(
+              'Erro desconhecido ao remover item do carrinho'
+            );
+          }
+        }),
+        catchError((error) => {
+          let errorMessage =
+            'Erro ao remover item do carrinho. Por favor, tente novamente mais tarde.';
+          if (error && error.error && error.error.message) {
+            errorMessage = error.error.message;
+          }
+          this.messageS.showErrorMessage(errorMessage);
+          return throwError(error);
+        })
+      );
+  }
   
 }
+
