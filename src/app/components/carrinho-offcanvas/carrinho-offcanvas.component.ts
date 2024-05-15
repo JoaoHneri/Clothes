@@ -89,13 +89,15 @@ export class CarrinhoOffcanvasComponent implements OnInit, OnChanges {
   addToPay() {
     const userId = String(this.authS.checkUserId());
     this.Pay.dicionarProdutosAoCarrinho(userId, this.cartProducts).subscribe(() => {
-      this.toggleOffCanvas()
-      this.cartTotal = 0;
+      this.toggleOffCanvas();
+      this.checkIfCartEmpty();
       this.router.navigateByUrl(`/account/${userId}`);
+      this.cartProducts = [];
     }, error => {
       console.error('Erro ao adicionar produtos ao carrinho:', error);
     });
   }
+  
   
 
 

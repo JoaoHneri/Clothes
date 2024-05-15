@@ -60,6 +60,11 @@
     </div>
   </div>
   <div class="oderdsCard">
-    <app-order-card *ngFor="let prod of prods"></app-order-card>
+    <app-order-card *ngFor="let prod of prods" [prodName]="prod.productName"
+    [prodSize]="prod.productSizes"
+    [prodPrice]="prod.productPrice"
+    [prodQnt]="prod.productQuantity"
+    [prodImg]="prod.src"
+    [statusBtn]="selectedStatus" ></app-order-card>
   </div>
 </div>

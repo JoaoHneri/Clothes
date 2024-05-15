@@ -33,10 +33,14 @@
     margin-left: 25px;
     display: flex;
     justify-content: space-between;
-    width: 70%;
+    width: 80%;
+  }
+
+  .infosProd{
+    width: 50% ;
   }
   .p-info-model {
-    color: #cac3c3;
+    color: #918a8a;
     padding: 10px 0px;
   }
   .p-info-price {
@@ -50,7 +54,7 @@
   }
   
   .p-info-quantity {
-    color: #cac3c3;
+    color: #918a8a;
   }
   
   .confirmation button {
