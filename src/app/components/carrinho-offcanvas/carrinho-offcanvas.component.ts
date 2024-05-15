@@ -2,7 +2,9 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { CartItemResponse } from 'src/app/interfaces/cartItemResponse';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
 import { CartServiceService } from 'src/app/services/cart-service.service';
+import { ProdPaymentsService } from 'src/app/services/prod-payments.service';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carrinho-offcanvas',
@@ -20,7 +22,9 @@ export class CarrinhoOffcanvasComponent implements OnInit, OnChanges {
 
   constructor(
     private cartS: CartServiceService,
-    private authS: AuthServicesService
+    private authS: AuthServicesService,
+    private Pay: ProdPaymentsService,
+    private router: Router
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -32,6 +36,7 @@ export class CarrinhoOffcanvasComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.getUserCart();
+    
   }
 
   toggleOffCanvas() {
@@ -49,6 +54,7 @@ export class CarrinhoOffcanvasComponent implements OnInit, OnChanges {
     const userId = String(this.authS.checkUserId());
     this.cartS.getCart(userId).subscribe((cart) => {
       this.cartProducts = cart;
+      console.log(this.cartProducts)
       this.calcularTotalProductPrice();
       this.checkIfCartEmpty();
     });
@@ -79,5 +85,19 @@ export class CarrinhoOffcanvasComponent implements OnInit, OnChanges {
     }
   }
 
+
+  addToPay() {
+    const userId = String(this.authS.checkUserId());
+    this.Pay.dicionarProdutosAoCarrinho(userId, this.cartProducts).subscribe(() => {
+      this.toggleOffCanvas()
+      this.cartTotal = 0;
+      this.router.navigateByUrl(`/account/${userId}`);
+    }, error => {
+      console.error('Erro ao adicionar produtos ao carrinho:', error);
+    });
+  }
   
+
+
+
 }

@@ -34,7 +34,6 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
-  height: 20em;
   background-color: #ffffff;
   margin-bottom: 50px;
   width: 100%;
@@ -55,6 +54,16 @@
   justify-content: space-evenly;
   margin-top: 10px;
 }
+
+.accountOpts-item {
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.accountOpts-item.selected {
+  border-bottom: 2px solid #2ba8fb; /* Adicione o estilo desejado para a borda inferior do item selecionado */
+}
+
 
 
 @media (max-width: 768px) {  

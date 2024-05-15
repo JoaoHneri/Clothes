@@ -33,11 +33,33 @@
     <h1>Pedidos</h1>
   </div>
   <div class="accountOpts">
-    <div class="accountOpts-item">Aguardando Pagamento</div>
-    <div class="accountOpts-item">Aguardando Envio</div>
-    <div class="accountOpts-item">Enviado</div>
-  </div>
-  
- <app-order-card></app-order-card>
+    <div
+      class="accountOpts-item"
+      [class.selected]="selectedStatus === 'Aguardando Pagamento'"
+      (click)="getByStatus('Aguardando Pagamento')"
+      (click)="selectStatus('Aguardando Pagamento')"
 
+    >
+      Aguardando Pagamento
+    </div>
+    <div
+      class="accountOpts-item"
+      [class.selected]="selectedStatus === 'Aguardando Envio'"
+      (click)="getByStatus('Aguardando Envio')"
+      (click)="selectStatus('Aguardando Envio')"
+    >
+      Aguardando Envio
+    </div>
+    <div
+      class="accountOpts-item"
+      [class.selected]="selectedStatus === 'Enviado'"
+      (click)="selectStatus('Enviado')"
+      (click)="getByStatus('Enviado')"
+    >
+      Enviado
+    </div>
+  </div>
+  <div class="oderdsCard">
+    <app-order-card *ngFor="let prod of prods"></app-order-card>
+  </div>
 </div>
