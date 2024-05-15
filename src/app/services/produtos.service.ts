@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from '../interfaces/product';
+import { ProductReceiver } from '../interfaces/ProductReceiver';
 
 
 @Injectable({
@@ -28,4 +29,11 @@ export class ProdutosService {
     const Url = `${this.ApiUrl}products/${idProd}`
     return this.http.get<Product>(Url);
   }
+
+
+  addProduto(formData: FormData): Observable<ProductReceiver> {
+    const url = `${this.ApiUrl}products`;
+    return this.http.post<ProductReceiver>(url, formData);
+  }
+  
 }

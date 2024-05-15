@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProdutosService } from 'src/app/services/produtos.service';
+import { environment } from 'src/environments/environment';
+import { ProductReceiver } from 'src/app/interfaces/ProductReceiver';
 
 @Component({
   selector: 'app-product-info',
@@ -6,38 +10,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-info.component.css']
 })
 export class ProductInfoComponent implements OnInit {
+  prod!: ProductReceiver;
+  url = environment.apiUrl;
+  precoUnitarioOriginal: number = 0; // Armazena o preço unitário original
+  produtoSelecionado: string = '';
+  myQuantity: number = 1;
 
-  constructor() { }
-
-  produto: any = {
-    titulo: 'Camiseta Masculina',
-    descricao: 'Descrição do produto...',
-    preco: 49.99,
-    tamanhos: ['P', 'M', 'G', 'GG'],
-    quantidade: 1
-  };
+  constructor(private ProdS: ProdutosService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    const id = String(this.route.snapshot.paramMap.get('id'));
+    this.ProdS.getProdutoPorId(id).subscribe((prod) => {
+      this.prod = prod;
+      this.precoUnitarioOriginal = prod.productPrice; // Armazena o preço unitário original
+    });
   }
 
   incrementarQuantidade(): void {
-    this.produto.quantidade++;
+    if(this.myQuantity < this.prod.productQuantity)
+    this.myQuantity++;
     this.atualizarPreco();
   }
 
   decrementarQuantidade(): void {
-    if (this.produto.quantidade > 1) {
-      this.produto.quantidade--;
+    if (this.myQuantity > 1) {
+      this.myQuantity--;
       this.atualizarPreco();
     }
   }
 
   atualizarPreco(): void {
-    // Atualiza o preço multiplicando o preço unitário pela quantidade
-    this.produto.preco = 49.99 * this.produto.quantidade;
+    // Atualiza o preço total usando o preço unitário original e a quantidade atual
+    this.prod.productPrice = this.precoUnitarioOriginal * this.myQuantity;
+    console.log(this.precoUnitarioOriginal)
   }
 
   adicionarAoCarrinho(): void {
-    console.log('Produto adicionado ao carrinho:', this.produto);
+    console.log('Produto adicionado ao carrinho:', this.prod.productQuantity);
   }
 }

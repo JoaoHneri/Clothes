@@ -27,6 +27,7 @@ import { OrderCardComponent } from './components/order-card/order-card.component
 import { OrderSplitComponent } from './components/order-split/order-split.component';
 import { CardCartComponent } from './components/card-cart/card-cart.component';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
+import { ProductFormComponent } from './pages/product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ProductInfoComponent } from './pages/product-info/product-info.componen
     OrderSplitComponent,
     CardCartComponent,
     ProductInfoComponent,
+    ProductFormComponent,
   ],
   imports: [
     BrowserModule,

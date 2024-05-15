@@ -2,30 +2,37 @@
     <div class="flex flex-wrap -mx-4">
       <div class="w-full md:w-1/2 px-4">
         <div class="bg-white rounded-lg shadow-md">
-          <img class="w-full h-auto" src="../../../assets/Images/Moda Masculina.png" alt="{{ produto.titulo }}">
+          <img class="w-full h-auto" src="{{url+prod.src}}" alt="{{ prod.productName }}">
         </div>
       </div>
       <div class="w-full md:w-1/2 px-4">
         <div class="bg-white rounded-lg shadow-md p-6">
-          <h2 class="text-xl font-semibold mb-4">{{ produto.titulo }}</h2>
-          <p class="text-base text-gray-700 mb-4">{{ produto.descricao }}</p>
-          <p class="text-lg font-bold text-black-600 mb-4">R$ {{ produto.preco }}</p>
+          <h2 class="text-xl font-semibold mb-4">{{ prod.productName }}</h2>
+          <p class="text-base text-gray-700 mb-4">{{ prod.productDescription }}</p>
+          <p class="text-lg font-bold text-black-600 mb-4">R$ {{ prod.productPrice }}</p>
           <div class="mb-4">
             <label class="block text-sm font-semibold mb-2">Tamanho:</label>
             <div class="flex items-center space-x-4">
-              <ng-container *ngFor="let tamanho of produto.tamanhos">
-                <input type="radio" [id]="tamanho" name="tamanho" [value]="tamanho" class="sr-only">
-                <label [for]="tamanho" class="radio-label cursor-pointer border border-gray-400 rounded-md px-4 py-2" [class.selected]="produto.tamanho === tamanho" (click)="produto.tamanho = tamanho">{{ tamanho }}</label>
+              <ng-container *ngFor="let tamanhoObj of prod.productSizes">
+                <input type="radio" [id]="tamanhoObj.size" name="tamanho" [value]="tamanhoObj.size" class="sr-only" [(ngModel)]="produtoSelecionado">
+                <label [for]="tamanhoObj.size" class="radio-label cursor-pointer border border-gray-400 rounded-md px-4 py-2" [class.selected]="produtoSelecionado === tamanhoObj.size">
+                  {{ tamanhoObj.size }}
+                </label>
               </ng-container>
             </div>
-          </div>          
+          </div>
+          
+          
+                  
           <div class="mb-4">
+            
             <label class="block text-sm font-semibold mb-2">Quantidade:</label>
             <div class="flex items-center">
               <button class="btn-quantidade" (click)="decrementarQuantidade()">-</button>
-              <p id="quantidade" class="w-16 py-2 px-4 text-center">{{produto.quantidade}}</p>
+              <p id="quantidade" class="w-16 py-2 px-4 text-center">{{myQuantity}}</p>
               <button class="btn-quantidade" (click)="incrementarQuantidade()">+</button>
             </div>
+            <span class="qntDis">Apenas {{prod.productQuantity}} disponíveis</span>
           </div>
           <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" (click)="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
           <div class="shipping-info">

@@ -33,9 +33,7 @@ export class CarrinhoOffcanvasComponent implements OnInit, OnChanges {
 
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.cartTotal = 0;
-    this.cartProducts = [];
-    this.totalProductPrice = 0;
+
     this.getUserCart();
   }
 

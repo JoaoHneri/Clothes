@@ -1,9 +1,11 @@
-export interface Product {
+export interface ProductReceiver {
+
     productName: string;
     productPrice: number;
-    productSizes: { size: string; }[];
+    productSizes: { size: string }[];
     productCategory: string;
     productDescription: string;
     productQuantity: number;
     src: File;
+
   }
