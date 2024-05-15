@@ -86,6 +86,11 @@
     color: #000000;
   }
 
+  .flash-border {
+    border-color: red; /* Altere para a cor desejada */
+    transition: border-color 0.5s ease; /* Adicione uma transição suave */
+  }
+  
 
   .shipping-info {
     background-color: #f7f8fa;

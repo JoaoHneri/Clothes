@@ -6,7 +6,7 @@
         <div class="title">
           <h1>Carrinho</h1>
         </div>
-        <div class="cards" *ngIf="cartProducts.length > 0">
+        <div class="cards" *ngIf="cartProducts && cartProducts.length > 0">
           <!-- Se houver itens no carrinho, mostre-os -->
           <div class="card" *ngFor="let item of cartProducts; let i = index">
             <div class="img-container">
@@ -40,12 +40,14 @@
 
               <div class="price">
                 <p>Preço: R$ {{ item.productPrice }}</p>
+                <p>Qntd: {{ item.productQuantity }}</p>
+                <p>Tamanho: {{ item.productSizes }}</p>
               </div>
             </div>
           </div>
         </div>
-        <div *ngIf="cartProducts.length === 0">
-          <!-- Se o carrinho estiver vazio, mostre uma mensagem -->
+        <div *ngIf="!cartProducts || cartProducts.length === 0">
+          <!-- Se o carrinho estiver vazio ou não existir, mostre uma mensagem -->
           <p>O seu carrinho está vazio.</p>
         </div>
 

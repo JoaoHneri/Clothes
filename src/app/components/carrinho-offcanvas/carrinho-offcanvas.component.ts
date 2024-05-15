@@ -1,12 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { CartItemResponse } from 'src/app/interfaces/cartItemResponse';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
 import { CartServiceService } from 'src/app/services/cart-service.service';
@@ -20,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class CarrinhoOffcanvasComponent implements OnInit, OnChanges {
   @Input() isClicked = false;
   @Output() isClickedChange = new EventEmitter<boolean>();
-  @Output() userCartLoaded = new EventEmitter<any>();
+  @Output() userCartLoaded = new EventEmitter<boolean>();
   cartTotal: number = 0;
   route: string = environment.apiUrl;
   cartProducts: any;
@@ -31,10 +23,11 @@ export class CarrinhoOffcanvasComponent implements OnInit, OnChanges {
     private authS: AuthServicesService
   ) {}
 
-
   ngOnChanges(changes: SimpleChanges): void {
-
-    this.getUserCart();
+    if ('cartProducts' in changes) {
+      this.checkIfCartEmpty();
+    }
+    this.getUserCart()
   }
 
   ngOnInit(): void {
@@ -46,20 +39,18 @@ export class CarrinhoOffcanvasComponent implements OnInit, OnChanges {
     this.isClickedChange.emit(this.isClicked);
   }
 
-
-
   closeOffCanvas() {
     this.isClicked = false;
     this.isClickedChange.emit(this.isClicked);
     this.cartTotal = 0; 
   }
 
-
   getUserCart() {
     const userId = String(this.authS.checkUserId());
     this.cartS.getCart(userId).subscribe((cart) => {
       this.cartProducts = cart;
-      this.calcularTotalProductPrice(); // Chama o método para calcular o total dos preços dos produtos
+      this.calcularTotalProductPrice();
+      this.checkIfCartEmpty();
     });
   }
   
@@ -67,19 +58,26 @@ export class CarrinhoOffcanvasComponent implements OnInit, OnChanges {
     if (this.cartProducts) {
       this.totalProductPrice = this.cartProducts.reduce((total: any, product: any) => {
         return total + product.productPrice;
-       
       }, 0);
-      console.log(this.totalProductPrice);
     }
   }
 
-
-
   deleteItemCart(cart_Id: string) {
-    const user_Id = String(this.authS.checkUserId());
-    this.cartS.deleteItemCart(user_Id, cart_Id).subscribe(()=>{
-      this.toggleOffCanvas();
+    this.cartS.deleteItemCart(cart_Id).subscribe(() => {
+      // Atualiza os dados do carrinho após a exclusão
+      this.cartProducts = this.cartProducts.filter((item: any) => item._id !== cart_Id);
+      this.calcularTotalProductPrice();
+      this.checkIfCartEmpty();
     });
   }
 
+  checkIfCartEmpty() {
+    if (!this.cartProducts || this.cartProducts.length === 0) {
+      this.userCartLoaded.emit(false);
+    } else {
+      this.userCartLoaded.emit(true);
+    }
+  }
+
+  
 }

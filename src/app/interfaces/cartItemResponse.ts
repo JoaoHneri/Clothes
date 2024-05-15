@@ -1,10 +1,14 @@
 // cart-item-response.interface.ts
 
 export interface CartItemResponse {
-    idProd: string;
-    userId: string;
-    _id: string;
-    __v: number;
-    message?: string; 
+  _id: string;
+  user_id: string;
+  idProd: string;
+  productName: string;
+  productPrice: number;
+  productSizes: string;
+  productQuantity: number;
+  src: string;
+  __v: number; 
   }
   

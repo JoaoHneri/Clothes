@@ -11,9 +11,24 @@ export class CartServiceService {
     private messageS: MessageServiceService
   ) {}
 
-  addCart(user_id: string, idProd: string): Observable<CartItemResponse> {
+  addCart(
+    user_id: string,
+    idProd: string,
+    productName: string,
+    productPrice: number,
+    productSizes: string,
+    productQuantity: number,
+    src: string
+  ): Observable<CartItemResponse> {
     // Defina os dados a serem enviados no corpo da solicitação
-    const data = { idProd };
+    const data = {
+      idProd,
+      productName,
+      productPrice,
+      productSizes,
+      productQuantity,
+      src
+    };
 
     return this.httpClient
       .post<CartItemResponse>(`http://localhost:3334/cart/${user_id}`, data)
@@ -37,7 +52,7 @@ export class CartServiceService {
           return throwError(error);
         })
       );
-  }
+  } 
 
   getCart(user_id: string): Observable<CartItemResponse> {
     // Verificar se user_id é válido
@@ -55,10 +70,10 @@ export class CartServiceService {
 
   
 
-  deleteItemCart(user_id: string, cart_id: string): Observable<any> {
+  deleteItemCart(cart_id: string): Observable<any> {
     
     return this.httpClient
-      .delete<any>(`http://localhost:3334/cart/${user_id}/${cart_id}`)
+      .delete<any>(`http://localhost:3334/cart/${cart_id}`)
       .pipe(
         tap((response) => {
           if (response) {

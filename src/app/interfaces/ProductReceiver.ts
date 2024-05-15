@@ -1,5 +1,5 @@
 export interface ProductReceiver {
-
+    _id?: string;
     productName: string;
     productPrice: number;
     productSizes: { size: string }[];

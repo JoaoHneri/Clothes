@@ -21,21 +21,12 @@ export class ProductCardComponent implements OnInit {
 
   isAuthenticated= false;
 
-  constructor(private authS: AuthServicesService, private messageS: MessageServiceService, private CartS: CartServiceService) { }
+  constructor(private authS: AuthServicesService) { }
   
   ngOnInit(): void {
     this.authS.isAuthenticated$().subscribe(isAuthenticated => {
       this.isAuthenticated = isAuthenticated;
     });
-  }
-
-  addCart(){
-    if(this.isAuthenticated){
-      const userId = String(this.authS.checkUserId()) ;
-      this.CartS.addCart(userId, this.id).subscribe()
-    }else{
-      this.messageS.showErrorMessage('Logue primeiro para adicionar itens ao carrinho');
-    }
   }
 
 
