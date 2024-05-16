@@ -1,38 +1,9 @@
-<!-- <div class="overview">
-  <div class="account-info">
-    <div class="accout">
-      <h1>João Henrique</h1>
-    </div>
-    <div class="accountOpts">
-      <div class="accountOpts-item">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="44"
-          height="44"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#000000"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <circle cx="10" cy="20.5" r="1" />
-          <circle cx="18" cy="20.5" r="1" />
-          <path
-            d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"
-          />
-        </svg>
-        Carrinho
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="account-orders">
   <div class="order">
     <h1>Pedidos</h1>
   </div>
   <div class="accountOpts">
+    <!-- Selecione o status -->
     <div
       class="accountOpts-item"
       [class.selected]="selectedStatus === 'Aguardando Pagamento'"
@@ -59,12 +30,21 @@
       Enviado
     </div>
   </div>
+  <!-- Verificação se há produtos ou se houve erro na requisição -->
   <div class="oderdsCard">
-    <app-order-card *ngFor="let prod of prods" [prodName]="prod.productName"
-    [prodSize]="prod.productSizes"
-    [prodPrice]="prod.productPrice"
-    [prodQnt]="prod.productQuantity"
-    [prodImg]="prod.src"
-    [statusBtn]="selectedStatus" ></app-order-card>
+    <ng-container *ngIf="prods && prods.length > 0; else noProducts">
+      <app-order-card  
+        *ngFor="let prod of prods" 
+        [prodName]="prod.productName"
+        [prodSize]="prod.productSizes"
+        [prodPrice]="prod.productPrice"
+        [prodQnt]="prod.productQuantity"
+        [prodImg]="prod.src"
+        [statusBtn]="selectedStatus">
+      </app-order-card>
+    </ng-container>
+    <ng-template #noProducts>
+      <div class="no-products-message">Não há produtos.</div>
+    </ng-template>
   </div>
 </div>

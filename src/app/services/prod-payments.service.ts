@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({providedIn: 'root'})
@@ -22,6 +22,24 @@ export class ProdPaymentsService {
   getProdutosPorStatus(userId: string, status: string): Observable<any> {
     const url = `${this.ApiUrl}payment/status/${userId}/${status}`;
 
-    return this.http.get<any>(url);
-  }
+    return this.http.get<any>(url).pipe(
+      tap((response) => {
+        if (response) {
+          console.log('Existe');
+        } else {
+          console.log(
+            'Não Existe'
+          );
+        }
+      }),
+      catchError((error) => {
+        let errorMessage =
+          'Erro ao adicionar item ao carrinho. Por favor, tente novamente mais tarde.';
+        if (error && error.error && error.error.message) {
+          errorMessage = error.error.message;
+        }
+       console.log(errorMessage);
+        return throwError(error);
+      })
+  )}
 }

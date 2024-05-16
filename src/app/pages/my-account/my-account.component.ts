@@ -12,7 +12,7 @@ import { ProdPaymentsService } from 'src/app/services/prod-payments.service';
 export class MyAccountComponent implements OnInit {
 
   component:String = "overview";
-
+ 
   constructor(private cartS: CartServiceService,
     private authS: AuthServicesService,
     private Pay: ProdPaymentsService,

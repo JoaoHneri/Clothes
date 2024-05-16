@@ -21,6 +21,7 @@ export class ProductInfoComponent implements OnInit {
   myQuantity: number = 1;
   isAuthenticated= false;
   mySrcId: string = "";
+
   constructor(private ProdS: ProdutosService, private route: ActivatedRoute, private authS: AuthServicesService, private CartS: CartServiceService, private messageS: MessageServiceService,private renderer: Renderer2) { }
 
   ngOnInit(): void {
