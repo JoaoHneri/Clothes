@@ -111,4 +111,34 @@ export class AuthServicesService {
   }
 
 
+  loginAdmin(userEmail: string, userPassword:string): Observable<any> {
+    const url = `${this.apiUrl}login/admin`;
+
+    const body = {
+      userEmail: userEmail,
+      userPassword: userPassword,
+    };
+
+    return this.httpClient.post<any
+    >(url, body).pipe(
+      tap((response) => {
+        if (response.token) {
+          sessionStorage.setItem('token', response.token);
+          sessionStorage.setItem('userId', response.userId);
+          sessionStorage.setItem('isAdmin', response.isAdmin);
+          this.isAuthenticatedSubject.next(true);
+          this.messageS.showSuccessMessage("Usuário logado com sucesso")
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.messageS.showErrorMessage(response.msg || 'Erro desconhecido ao fazer login')
+        }
+      }),
+      catchError((error) => {
+        this.messageS.showErrorMessage(error.error.msg || 'Erro ao fazer login. Por favor, tente novamente mais tarde.')
+        return throwError(error);
+      })
+    );
+  }
+
+
 }

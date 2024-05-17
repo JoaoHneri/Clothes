@@ -30,6 +30,7 @@ import { ProductInfoComponent } from './pages/product-info/product-info.componen
 import { ProductFormComponent } from './pages/product-form/product-form.component';
 import { DashComponenteComponent } from './pages/dash-componente/dash-componente.component';
 import { SuccesPaymentComponent } from './pages/succes-payment/succes-payment.component';
+import { LoginAdminComponent } from './pages/login-admin/login-admin.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { SuccesPaymentComponent } from './pages/succes-payment/succes-payment.co
     ProductFormComponent,
     DashComponenteComponent,
     SuccesPaymentComponent,
+    LoginAdminComponent,
   ],
   imports: [
     BrowserModule,
