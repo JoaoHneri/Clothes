@@ -28,6 +28,8 @@ import { OrderSplitComponent } from './components/order-split/order-split.compon
 import { CardCartComponent } from './components/card-cart/card-cart.component';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
 import { ProductFormComponent } from './pages/product-form/product-form.component';
+import { DashComponenteComponent } from './pages/dash-componente/dash-componente.component';
+import { SuccesPaymentComponent } from './pages/succes-payment/succes-payment.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { ProductFormComponent } from './pages/product-form/product-form.componen
     CardCartComponent,
     ProductInfoComponent,
     ProductFormComponent,
+    DashComponenteComponent,
+    SuccesPaymentComponent,
   ],
   imports: [
     BrowserModule,

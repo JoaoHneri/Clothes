@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
 import { CartServiceService } from 'src/app/services/cart-service.service';
 import { ProdPaymentsService } from 'src/app/services/prod-payments.service';
@@ -23,7 +23,7 @@ export class MyAccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+
   }
 
   
