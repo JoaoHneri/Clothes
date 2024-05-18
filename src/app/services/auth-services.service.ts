@@ -110,6 +110,14 @@ export class AuthServicesService {
     }
   }
 
+  checkisAdmin(){
+    if(sessionStorage.getItem('userId')){
+      return sessionStorage.getItem('userId');
+    }else{
+      return null;
+    }
+  }
+
 
   loginAdmin(userEmail: string, userPassword:string): Observable<any> {
     const url = `${this.apiUrl}login/admin`;
@@ -140,5 +148,10 @@ export class AuthServicesService {
     );
   }
 
+
+  getUserAdmin(user_id: string): Observable<any>{
+      const url = `${this.apiUrl}getAdminUser/${user_id}`;
+      return this.httpClient.get<any>(url)
+    }
 
 }

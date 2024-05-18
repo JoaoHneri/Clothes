@@ -20,27 +20,27 @@
           <h1>Welcome to Your Dashboard</h1>
           <div class="header-user">
             <img src="user-avatar.png" alt="User Avatar">
-            <span>John Doe</span>
+            <span>{{userName}}</span>
           </div>
         </div>
       </header>
       <section class="content">
         <div class="widgets">
           <div class="widget">
-            <h3>Revenue</h3>
-            <p>$20,000</p>
+            <h3>Ganhos</h3>
+            <p>R${{rent}}</p>
           </div>
           <div class="widget">
-            <h3>New Users</h3>
-            <p>1,200</p>
+            <h3>Usuários</h3>
+            <p>{{usersLength}}</p>
           </div>
           <div class="widget">
-            <h3>Orders</h3>
-            <p>150</p>
+            <h3>Pedidos a enviar</h3>
+            <p>{{orders}}</p>
           </div>
           <div class="widget">
-            <h3>Visitors</h3>
-            <p>10,000</p>
+            <h3>Total de Pedidos</h3>
+            <p>{{totalOrders}}</p>
           </div>
         </div>
         <div class="charts">
