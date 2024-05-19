@@ -35,5 +35,7 @@ export class ProdutosService {
     const url = `${this.ApiUrl}products`;
     return this.http.post<ProductReceiver>(url, formData);
   }
+
+  
   
 }

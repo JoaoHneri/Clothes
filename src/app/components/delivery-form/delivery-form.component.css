@@ -1,0 +1,65 @@
+.content{
+    background-color: #b7ddf7;
+    padding: 25px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1.9px solid #2ba8fb;
+    width: 90%;
+}
+
+.content p{
+    margin-bottom: 5px;
+}
+
+.content h1{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.content .opts{
+    display: flex;
+    flex-direction: row;   
+}
+
+.content .opts button{
+    margin-right: 25px; 
+    color: #2ba8fb;
+}
+
+.btnAdd{
+    margin-top: 20px;
+}
+
+.btnAdd button{
+    background-color: #2ba8fb;
+    width: 90%;
+    padding: 5px;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+
+}
+
+.textContent h1{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.container {
+    margin-top: 20px;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .btn-block {
+    display: block;
+    width: 100%;
+  }
+  
+
+
+  

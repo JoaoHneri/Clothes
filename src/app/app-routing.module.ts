@@ -9,6 +9,8 @@ import { ProductFormComponent } from './pages/product-form/product-form.componen
 import { DashComponenteComponent } from './pages/dash-componente/dash-componente.component';
 import { SuccesPaymentComponent } from './pages/succes-payment/succes-payment.component';
 import { LoginAdminComponent } from './pages/login-admin/login-admin.component';
+import { ProductProcessComponent } from './pages/product-process/product-process.component';
+import { SendProdsComponent } from './pages/send-prods/send-prods.component';
 
 const routes: Routes = [
 {path: '', component: HomeComponent},
@@ -16,9 +18,12 @@ const routes: Routes = [
 {path: 'account/:id', component: MyAccountComponent},
 {path: 'product/:id', component: ProductInfoComponent},
 {path: 'success-payment/:user_id/:_id', component: SuccesPaymentComponent},
+// somente Admin
 {path: 'prodForm', component: ProductFormComponent},
 {path: 'dashboard', component: DashComponenteComponent},
 {path: 'loginAdmin', component: LoginAdminComponent},
+{path: 'prodProcess', component: ProductProcessComponent},
+{path: 'sendProds/:_id', component: SendProdsComponent},
 ];
 
 @NgModule({

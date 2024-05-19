@@ -15,12 +15,13 @@
           <button>Reembolso</button>
         </div>
         <div class="optSide">
-            <button>Endereço de entrega</button>
+            <button (click)="showComponent('delivery')">Endereço de entrega</button>
         </div>
       </div>
       <div class="contentOptions">
         <app-overview *ngIf="component === 'overview' "></app-overview>
         <app-order-split *ngIf="component === 'orders' "></app-order-split>
+        <app-delivery-form *ngIf="component === 'delivery' "></app-delivery-form>
       </div>
   </div>
 </div>

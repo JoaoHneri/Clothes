@@ -31,6 +31,9 @@ import { ProductFormComponent } from './pages/product-form/product-form.componen
 import { DashComponenteComponent } from './pages/dash-componente/dash-componente.component';
 import { SuccesPaymentComponent } from './pages/succes-payment/succes-payment.component';
 import { LoginAdminComponent } from './pages/login-admin/login-admin.component';
+import { ProductProcessComponent } from './pages/product-process/product-process.component';
+import { SendProdsComponent } from './pages/send-prods/send-prods.component';
+import { DeliveryFormComponent } from './components/delivery-form/delivery-form.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +61,9 @@ import { LoginAdminComponent } from './pages/login-admin/login-admin.component';
     DashComponenteComponent,
     SuccesPaymentComponent,
     LoginAdminComponent,
+    ProductProcessComponent,
+    SendProdsComponent,
+    DeliveryFormComponent,
   ],
   imports: [
     BrowserModule,

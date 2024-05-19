@@ -1,0 +1,18 @@
+<div class="cardsStatus mt-10 mb-10">
+    <h1 class="text-center mb-4">Lista de Produtos</h1>
+    <div class="conts">
+      <div class="col-md-4" *ngFor="let produto of produtos">
+        <div class="card mb-4 shadow-sm">
+          <img class="card-img-top" src="{{url+ produto.src }}" alt="Imagem do produto">
+          <div class="card-body">
+            <h5 class="card-title">{{ produto.productName }}</h5>
+            <h5 class="card-title">Quantidade: {{ produto.productQuantity }}</h5>
+            <p class="card-text">Status: {{ produto.status }}</p>
+            <button (click)="sendToDelivery(produto._id)">Ver Detalhes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  

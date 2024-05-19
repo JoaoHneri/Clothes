@@ -67,5 +67,10 @@ export class ProdPaymentsService {
     const url = `${this.ApiUrl}success-payment/${user_id}/${_id}`;
     return this.http.get<any>(url);
   }
+
+  getProdutosPorStatusSend( status:String ): Observable<any>{
+    const Url = `${this.ApiUrl}payment/send/status/${status}`
+    return this.http.get<any>(Url);
+  }
   
 }
