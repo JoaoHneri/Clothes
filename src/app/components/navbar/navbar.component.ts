@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit, OnChanges {
   isDropdownOpen: boolean = false;
   isAuthenticated = false;
   userId = this.authS.checkUserId();
+  isAdmin!: boolean;
   private CarrinhoOffcanvasComponet!: CarrinhoOffcanvasComponent;
 
   constructor(private authS: AuthServicesService) {}
@@ -44,6 +45,8 @@ export class NavbarComponent implements OnInit, OnChanges {
     this.authS.isAuthenticated$().subscribe(isAuthenticated => {
       this.isAuthenticated = isAuthenticated;
     });
+
+    this.isAdmin = Boolean(sessionStorage.getItem('isAdmin'));
   }
 
   logOut(){

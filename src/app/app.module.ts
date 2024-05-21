@@ -34,6 +34,7 @@ import { LoginAdminComponent } from './pages/login-admin/login-admin.component';
 import { ProductProcessComponent } from './pages/product-process/product-process.component';
 import { SendProdsComponent } from './pages/send-prods/send-prods.component';
 import { DeliveryFormComponent } from './components/delivery-form/delivery-form.component';
+import { CategoryCardsComponent } from './components/category-cards/category-cards.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { DeliveryFormComponent } from './components/delivery-form/delivery-form.
     ProductProcessComponent,
     SendProdsComponent,
     DeliveryFormComponent,
+    CategoryCardsComponent,
   ],
   imports: [
     BrowserModule,

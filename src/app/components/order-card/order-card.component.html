@@ -1,30 +1,36 @@
-<div class="delivery">  
-    <div class="textDelivery">
-      <h1>Entrega</h1>
+<div class="delivery">
+  <div class="textDelivery">
+    <h1>Entrega</h1>
+  </div>
+  <div class="product">
+    <div class="img">
+      <img [src]="apiUrl + prodImg" alt="" />
     </div>
-    <div class="product">
-      <div class="img">
-        <img [src]="apiUrl+prodImg" alt="" />
-      </div>
-      <div class="p-infos">
-        <div class="infosProd">
-          <div class="p-info-product">
-            <h1>{{prodName}}</h1>
-          </div>
-          <div class="p-info-model">
-            <h1>Tamanho {{prodSize}}</h1>
-          </div>
-          <div class="p-info-price">
-            <h1>R$ {{prodPrice}}</h1>
+    <div class="p-infos">
+      <div class="infosProd">
+        <div class="p-info-product">
+          <h1>{{ prodName }}</h1>
+        </div>
+        <div class="p-info-model">
+          <h1>Tamanho {{ prodSize }}</h1>
+        </div>
+        <div class="p-info-price">
+          <h1>R$ {{ prodPrice }}</h1>
 
-            <div class="p-info-quantity">
-              <p>qntd: {{prodQnt}}</p>
-            </div>
+          <div class="p-info-quantity">
+            <p>qntd: {{ prodQnt }}</p>
           </div>
         </div>
-        <div class="confirmation">
-          <button (click)="goToPay()">{{btnText}}</button>
+      </div>
+      <div class="confirmation">
+        <button (click)="handleButtonClick()">{{ btnText }}</button>
+        <div class="funcClass" (click)=" transformCode()">
+          <p  *ngIf="codeRastreio != null">Ver Rastreio</p>
+        </div>
+        <div [class]="code">
+          <p (click)="copyCode()">{{ codeRastreio }}</p>
         </div>
       </div>
     </div>
   </div>
+</div>

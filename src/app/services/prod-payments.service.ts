@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, tap, throwError } from 'rxjs';
+import { Observable, catchError, tap, throwError, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { OrderPayment } from '../interfaces/OrderPayment';
+import { MessageServiceService } from './message-service.service';
 
 @Injectable({providedIn: 'root'})
 export class ProdPaymentsService {
   ApiUrl = environment.apiUrl
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private messageS: MessageServiceService) { }
 
   dicionarProdutosAoCarrinho(userId: string, produtos: any[]): Observable<any> {
     const Url = `${this.ApiUrl}payment/${userId}`
@@ -45,21 +46,29 @@ export class ProdPaymentsService {
   )}
 
 
-  addProdToPay(orderPayment: OrderPayment): Observable<OrderPayment>{
+  addProdToPay(orderPayment: OrderPayment): Observable<OrderPayment> {
     const url = `${this.ApiUrl}createOrder`;
-    return this.http.post<OrderPayment>(url, orderPayment).pipe(tap((response) => {
-      if (response) {
-        if(response.init_point) {
-          setTimeout(()=>{
-            alert("Aguarde...")
-          }, 3000)
-        window.location.href = response.init_point}
-      } else {
-        console.log(
-          'Não Existe'
+    
+    return this.http.post<OrderPayment>(url, orderPayment).pipe(
+      tap((response) => {
+        if (response) {
+          if (response.init_point) {
+            setTimeout(() => {
+              alert("Aguarde...");
+            }, 3000);
+            window.location.href = response.init_point;
+          }
+        } else {
+          console.log('Não Existe');
+        }
+      }),
+      catchError((error) => {
+        this.messageS.showErrorMessage(
+          error.error.message || 'Erro ao efetuar pagamento. Por favor, tente novamente mais tarde.'
         );
-      }
-    }));
+        return throwError(error);
+      })
+    );
   }
 
 
@@ -72,5 +81,41 @@ export class ProdPaymentsService {
     const Url = `${this.ApiUrl}payment/send/status/${status}`
     return this.http.get<any>(Url);
   }
+
+  getProdutos( idProd:String ): Observable<any>{
+    const Url = `${this.ApiUrl}payment/prod/${idProd}`
+    return this.http.get<any>(Url);
+  }
+
+
+  sendAndCode(idProd: string, code: string, _id: string): Observable<any> {
+    if (code === "") {
+      this.messageS.showErrorMessage("Digite o código de rastreio");
+      return of(null); 
+    }
+    const Url = `${this.ApiUrl}payment/prod/code/${idProd}/${code}/${_id}`;
+    return this.http.post<any>(Url, code).pipe(
+      tap(() => {
+        this.messageS.showSuccessMessage("enviado");
+      })
+    );
+  }
+
+
+  concludPay(_id: string): Observable<any> {
+    const Url = `${this.ApiUrl}payment/send/complete/${_id}`;
+    return this.http.get<any>(Url).pipe(
+      tap((response) => {
+        if (response) {
+          this.messageS.showSuccessMessage('Confirmado com sucesso');
+        } else {
+          this.messageS.showErrorMessage(
+            'Erro desconhecido ao confirmar recebimento'
+          );
+        }
+      })
+    );
+  }
+  
   
 }

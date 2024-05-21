@@ -7,29 +7,33 @@
     <div
       class="accountOpts-item"
       [class.selected]="selectedStatus === 'Aguardando Pagamento'"
-      (click)="getByStatus('Aguardando Pagamento')"
-      (click)="selectStatus('Aguardando Pagamento')"
-
+      (click)="selectStatus('Aguardando Pagamento'); getByStatus('Aguardando Pagamento')"
     >
       Aguardando Pagamento
     </div>
     <div
       class="accountOpts-item"
       [class.selected]="selectedStatus === 'Aguardando Envio'"
-      (click)="getByStatus('Aguardando Envio')"
-      (click)="selectStatus('Aguardando Envio')"
+      (click)="selectStatus('Aguardando Envio'); getByStatus('Aguardando Envio')"
     >
       Aguardando Envio
     </div>
     <div
       class="accountOpts-item"
       [class.selected]="selectedStatus === 'Enviado'"
-      (click)="selectStatus('Enviado')"
-      (click)="getByStatus('Enviado')"
+      (click)="selectStatus('Enviado'); getByStatus('Enviado')"
     >
       Enviado
     </div>
+    <div
+      class="accountOpts-item"
+      [class.selected]="selectedStatus === 'Concluído'"
+      (click)="selectStatus('Concluído'); getByStatus('Concluido')"
+    >
+      Concluído
+    </div>
   </div>
+  
   <!-- Verificação se há produtos ou se houve erro na requisição -->
   <div class="oderdsCard">
     <ng-container *ngIf="prods && prods.length > 0; else noProducts">
@@ -41,7 +45,9 @@
         [prodQnt]="prod.productQuantity"
         [prodImg]="prod.src"
         [statusBtn]="selectedStatus"
-        [_id]="prod._id">
+        [_id]="prod._id"
+        [codeRastreio]="prod.codRastreio">
+
       </app-order-card>
     </ng-container>
     <ng-template #noProducts>

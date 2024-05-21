@@ -56,7 +56,20 @@
   .p-info-quantity {
     color: #918a8a;
   }
+  .confirmation{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .funcClass p{
+    margin-top: 12px;
+    font-size: 14px;
+    border-bottom: 1px solid rgb(212, 212, 212);
   
+  }
+
+
   .confirmation button {
     padding: 7.5px 18px;
     border: 0;
@@ -81,7 +94,21 @@
     box-shadow: none;
     transform: scale(0.98);
   }
+
+  .noCode{
+    display: none;
+  }
+  .seeCode{
+    margin-top: 6px;
+    background-color: rgb(211, 211, 211);
+    border-radius: 8px;
+    padding: 3px;
+    cursor: pointer;
+  }
   
+  .funcClass{
+    cursor: pointer;
+  }
 
   @media (max-width: 768px) {
 

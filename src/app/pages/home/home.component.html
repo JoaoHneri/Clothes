@@ -1,51 +1,41 @@
-<div class="imageBg">
-  <div class="image">
-    <img
-      src="../../../assets/Images/pexels-tembela-bohle-1884581.jpg"
-      alt=""
-      srcset=""
-    />
-
-    <div class="textImage">
-      <p class="">Aproveite as Promoções</p>
-    </div>
+<div class="bening">
+  <div class="contentFB" >
+    <img src="../../../assets/Images/banner.jpg" alt="details">
+      <div class="legenda">
+          <h1 >COMPRE NOSSAS COLEÇÕES EXCLUSIVAS NO SITE</h1>
+          <div class="texts">
+            <p>Compre somente aqui as melhores coleções de todas estações <br/> do país</p>
+            <button >Compre Agora</button>
+          </div>
+      
+      </div>
   </div>
 </div>
 <div
-  class="p-6 lg:p-10 xl:p-10 xl:pb-32 xl:pt-32 flex flex-col justify-between"
+  class="p-6 lg:p-10 xl:p-10 xl:pb-32 flex flex-col justify-between "
 >
   <h1 class="lg:text-3xl md:text-xl font-bold">Compre por categorias</h1>
   <div
-    class="cards flex justify-center mt-6 sm:justify-between"
+    class="cards flex justify-center mt-6 sm:justify-between flex-wrap"
   >
-    <app-cards-home
-      title="Moda Feminina"
-      src="../../../assets/Images/pexels-dziana-hasanbekava-5480696 1.png"
-      category="feminina"
-    ></app-cards-home>
-    <app-cards-home
-      title="Acessórios"
-      src="../../../assets/Images/acessorios.png"
-      category="acessorios"
-    ></app-cards-home>
-    <app-cards-home
-      title="Moda Masculina"
-      src="../../../assets/Images/Moda Masculina.png"
-      category="masculina"
-    ></app-cards-home>
-    <app-cards-home
-      title="Tênis"
-      src="../../../assets/Images/tenis.png"
-      category="tenis"
-    ></app-cards-home>
+  <app-category-cards src="../../../assets/Images/MAN.jpg" title="HOMEM" category="masculina">
+  </app-category-cards>
+  <app-category-cards src="../../../assets/Images/WOMAN.jpg" title="MULHER" category="feminina">
+  </app-category-cards>
+  <app-category-cards src="../../../assets/Images/ASSE.jpg" title="ACESSÓRIOS"  category="acessorios">
+  </app-category-cards>
   </div>
 </div>
 
-<div class="annunciment">
-  <app-anuncio-collection></app-anuncio-collection>
+<div class="saecons">
+  <div class="nation" >
+    <img src="../../../assets/Images/fashion.jpg" alt="details">
+  </div>
 </div>
+
+
 <div
-  class="about xl:pt-24 flex-row justify-center text-center items-center lg:p-20 lg:pl-80 lg:pr-80"
+  class="about  flex-row justify-center text-center items-center lg:pl-80 lg:pr-80"
 >
   <h1 class="lg:text-3xl font-bold mb-4">Sobre a S&JJ</h1>
   <p class="lg:text-2xl font-bold">
@@ -63,27 +53,15 @@
 <div
   class="p-6 lg:p-10 xl:p-10 xl:pb-32 xl:pt-32 flex flex-col justify-between"
 >
-  <h1 class="lg:text-3xl md:text-xl font-bold">Compre Agora</h1>
   <div
-    class="cards flex justify-center mt-6 sm:justify-between"
+    class="cards flex justify-center mt-6 sm:justify-between flex-wrap"
   >
-    <app-cards-home
-      title="Moda Feminina"
-      src="../../../assets/Images/pexels-dziana-hasanbekava-5480696 1.png"
-    ></app-cards-home>
-    <app-cards-home
-      title="Ascessórios"
-      src="../../../assets/Images/acessorios.png"
-    ></app-cards-home>
-    <app-cards-home
-      title="Moda Masculina"
-      src="../../../assets/Images/Moda Masculina.png"
-    ></app-cards-home>
-    <app-cards-home
-      title="Tênis"
-      src="../../../assets/Images/tenis.png"
-    ></app-cards-home>
-  </div>
+  <app-category-cards src="../../../assets/Images/calcados.jpg" title="CALÇADOS" category="calcados">
+  </app-category-cards>
+  <app-category-cards src="../../../assets/Images/moletons.jpg" title="MOLETONS" category="moletons">
+  </app-category-cards>
+  <app-category-cards src="../../../assets/Images/calcas.jpg" title="CALÇAS" category="calcas">
+  </app-category-cards>
 </div>
 <div class="contats">
   <div class="component p-10">

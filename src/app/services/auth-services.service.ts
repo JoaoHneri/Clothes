@@ -94,6 +94,7 @@ export class AuthServicesService {
       if (confirmed) {
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('userId');
+        sessionStorage.removeItem('isAdmin');
         this.messageS.showSuccessMessage("Usuário Deslogado.");
         this.isAuthenticatedSubject.next(false);
         window.location.reload();

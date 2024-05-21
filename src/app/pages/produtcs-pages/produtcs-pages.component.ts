@@ -23,7 +23,9 @@ export class ProdutcsPagesComponent implements OnInit {
     category ==  "feminina" ? this.categoria = "Moda Feminina" : null;
     category ==  "masculina" ? this.categoria = "Moda Masculina" : null;
     category == "acessorios" ? this.categoria = "Acessórios" : null;
-    category == "tenis" ? this.categoria = "Tênis" : null;
+    category == "calcados" ? this.categoria = "Calçados" : null;
+    category == "calcas" ? this.categoria = "Calças" : null;
+    category == "moletons" ? this.categoria = "Moletons" : null;
 
     this.produtosS.getProdutosPorCategoria(category).subscribe((item)=> {
       this.produtos = item;

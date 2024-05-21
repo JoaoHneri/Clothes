@@ -1,12 +1,13 @@
-<div
-  class="shadow-lg p-5 flex flex-col sm:flex-row items-center justify-between text-center"
->
-  <div class="mb-4 sm:mb-0">LOGO</div>
-  <div class="flex justify-between sm:justify-start space-x-10">
+<div class="nav shadow-lg p-5 ">
+
+
+  <div class="links_nav flex justify-between">
     <a href="" class="hover:text-stone-500">Home</a>
     <a href="" class="hover:text-stone-500">Categorias</a>
     <a href="" class="hover:text-stone-500">Sobre Nós</a>
   </div>
+
+  <div class="titleSj"><p>S&JJ</p></div>
 
   <div class="flex">
     <div class="dropdown mr-8" *ngIf="isAuthenticated">
@@ -29,22 +30,18 @@
       </button>
 
       <div class="dropdown-menu" [class.show]="isDropdownOpen">
-        <button class="dropdown-item" routerLink="account/{{userId}}">
-          Minha conta
+        <button
+          class="dropdown-item"
+          [routerLink]="isAdmin ? 'dashboard' : 'account/' + userId"
+        >
+          Minha Conta
         </button>
-        <button class="dropdown-item" (click)="logOut()">
-          Sair
-        </button>
+        <button class="dropdown-item" (click)="logOut()">Sair</button>
       </div>
     </div>
 
-
-      <button
-        class="dropdown-toggle mr-8"
-        mat-raised-button
-        (click)="openModal()"
-        *ngIf="!isAuthenticated"
-      >
+    <div class="dropdown mr-8" *ngIf="!isAuthenticated">
+      <button class="dropdown-toggle" (click)="openModal()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -62,7 +59,18 @@
         </svg>
       </button>
 
-    <a class="cursor-pointer mr-8" (click)="clickHistory()"
+      <div class="dropdown-menu" [class.show]="isDropdownOpen">
+        <button
+          class="dropdown-item"
+          [routerLink]="isAdmin ? 'dashboard' : 'account/' + userId"
+        >
+          Minha Conta
+        </button>
+        <button class="dropdown-item" (click)="logOut()">Sair</button>
+      </div>
+    </div>
+
+    <a class="cursor-pointer xl:mr-8 sm:pr-9" (click)="clickHistory()"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -81,7 +89,10 @@
         /></svg
     ></a>
   </div>
+  
 </div>
+
+
 <app-carrinho-offcanvas [(isClicked)]="click"></app-carrinho-offcanvas>
 <app-modal-auth
   *ngIf="showModal"

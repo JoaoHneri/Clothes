@@ -1,1 +1,40 @@
-<p>send-prods works!</p>
+<div class="content">
+  <div class="prods">
+    <div class="product-detail-container">
+      <h2>Detalhes do Produto</h2>
+      <div class="product-info">
+        <div class="imgInfo">
+          <img [src]="urlApi + product.src" alt="" />
+        </div>
+        <div class="infos">
+          <h3>{{ product.productName }}</h3>
+          <p><strong>Quantidade:</strong> {{ product.productQuantity }}</p>
+          <p>
+            <strong>Preço:</strong> R$
+            {{ product.productPrice | number : "1.2-2" }}
+          </p>
+          <p><strong> Tamanho:</strong> {{ product.productSizes }}</p>
+        </div>
+      </div>
+
+      <div class="address-info-content" *ngIf="address">
+        <div class="addrs">
+          <h3>Endereço de Entrega</h3>
+          <p><strong>Endereço:</strong> {{ address.endereco }}</p>
+          <p><strong>Bairro:</strong> {{ address.bairro }}</p>
+          <p><strong>Número:</strong> {{ address.numero }}</p>
+          <p><strong>Cidade:</strong> {{ address.cidade }}</p>
+          <p><strong>Estado:</strong> {{ address.estado }}</p>
+          <p><strong>CEP:</strong> {{ address.cep }}</p>
+        </div>
+        <div class="address-info" *ngIf="address">
+            <h3>Adicionar código de Rastreio</h3>
+            <input type="text" placeholder="Rastreio" [(ngModel)]="codigoRastreio" />
+          </div>
+        <div class="div"></div>
+      </div>
+
+      <button class="send-product-btn" (click)="sendAndCode()">Enviar Produto</button>
+    </div>
+  </div>
+</div>

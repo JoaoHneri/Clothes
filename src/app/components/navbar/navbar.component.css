@@ -1,12 +1,32 @@
-/* Estilo do dropdown */
+.nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.links_nav a{
+  margin-right: 10px;
+}
+
+
+.titleSj {
+  font-weight: bold;
+  margin-right: 12px;
+  font-size: 2em;
+}
+
+
+
 .dropdown {
     position: relative;
     display: inline-block;
+    justify-content: initial;
   }
   
   .dropdown-toggle {
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s; /* Transição suave de cor */
+    transition: background-color 0.3s, color 0.3s;
+    justify-content: initial; /* Transição suave de cor */
   }
   
   .dropdown-toggle:hover {

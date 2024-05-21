@@ -1,0 +1,29 @@
+.content{
+    position: relative;
+}
+.content img{
+    width: 570px;
+    height: 620px;
+    border-radius: 13px;
+}
+.legenda{
+    position: relative;
+    left: 15px;
+    bottom: 100px;
+}
+
+.legenda h1{
+    font-size: 1.9rem;
+    font-weight: bold;
+    margin: 0;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.legenda button{
+    background-color: #FFF;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-size: .7rem;
+    font-weight: bold;
+}
