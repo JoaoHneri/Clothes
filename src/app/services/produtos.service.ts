@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from '../interfaces/product';
 import { ProductReceiver } from '../interfaces/ProductReceiver';
+import { MessageServiceService } from './message-service.service';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -13,7 +15,7 @@ import { ProductReceiver } from '../interfaces/ProductReceiver';
 export class ProdutosService {
   private ApiUrl = environment.apiUrl;
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private messageS: MessageServiceService, private router: Router) { }
 
   getProdutosPorCategoria( categoria:String ): Observable<Product>{
     const Url = `${this.ApiUrl}products/category/${categoria.toLowerCase()}`
@@ -33,7 +35,14 @@ export class ProdutosService {
 
   addProduto(formData: FormData): Observable<ProductReceiver> {
     const url = `${this.ApiUrl}products`;
-    return this.http.post<ProductReceiver>(url, formData);
+    return this.http.post<ProductReceiver>(url, formData).pipe(tap((response)=>{
+      if(response){
+        this.messageS.showSuccessMessage("Produto adicionado com sucesso!");
+        this.router.navigate(['/dashboard']);
+      }else{
+        this.messageS.showErrorMessage("Erro desconhecido ao adicionar produto!");
+      }
+    }))
   }
 
   

@@ -1,0 +1,81 @@
+.content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    width: 100%;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    height: 500px;
+    animation: fadeIn 1s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 32px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .form-group {
+    margin-bottom: 30px;
+    text-align: left;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-sizing: border-box;
+    font-size: 18px;
+    color: #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    outline: none;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(120deg, #27ae60, #2ecc71);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  button[type="submit"]:hover {
+    background: linear-gradient(120deg, #2ecc71, #27ae60);
+  }

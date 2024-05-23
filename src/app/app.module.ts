@@ -35,6 +35,9 @@ import { ProductProcessComponent } from './pages/product-process/product-process
 import { SendProdsComponent } from './pages/send-prods/send-prods.component';
 import { DeliveryFormComponent } from './components/delivery-form/delivery-form.component';
 import { CategoryCardsComponent } from './components/category-cards/category-cards.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { ChartRadialComponent } from './components/chart-radial/chart-radial.component';
+import { ChartDateComponent } from './components/chart-date/chart-date.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +69,8 @@ import { CategoryCardsComponent } from './components/category-cards/category-car
     SendProdsComponent,
     DeliveryFormComponent,
     CategoryCardsComponent,
+    ChartRadialComponent,
+    ChartDateComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +78,8 @@ import { CategoryCardsComponent } from './components/category-cards/category-car
     HttpClientModule, 
     MatDialogModule,
     BrowserAnimationsModule,
-    FormsModule, ReactiveFormsModule, SweetAlert2Module.forRoot()
+    FormsModule, ReactiveFormsModule, SweetAlert2Module.forRoot(),
+    NgApexchartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -15,6 +15,7 @@ export class ProductFormComponent {
   productDescription: string = '';
   productQuantity: number = 0;
   imageFile: File | null = null; // Alteração: Usando um tipo File para armazenar o arquivo
+  imagePreview!: string | ArrayBuffer;
 
   constructor(private produtosService: ProdutosService) {}
 
@@ -60,7 +61,14 @@ export class ProductFormComponent {
   
   onFileSelected(event: any) {
     this.imageFile = event.target.files[0];
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader!.result!;
+    };
+    reader.readAsDataURL(file);
   }
+
 
   limparCampos() {
     this.productName = '';

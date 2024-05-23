@@ -2,17 +2,18 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+}
+.links_nav{
+  width: 15%;
 }
 
-.links_nav a{
-  margin-right: 10px;
-}
 
 
 .titleSj {
   font-weight: bold;
   margin-right: 12px;
-  font-size: 2em;
+  font-size: 1em;
 }
 
 
@@ -44,6 +45,7 @@
     border-radius: 4px; /* Borda arredondada */
     opacity: 0; /* Opacidade inicial */
     transition: opacity 0.3s; /* Transição suave de opacidade */
+    right: -40px;
   }
   
   .dropdown-menu.show {
@@ -64,3 +66,5 @@
     background-color: #f1f1f1; /* Cor de fundo do item do dropdown ao passar o mouse */
   }
   
+
+

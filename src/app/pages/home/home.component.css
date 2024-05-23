@@ -13,7 +13,7 @@
 
 .contentFB img {
   width: 100%;
-  height: 700px;
+  height: 730px;
   object-fit: cover;
   object-position: center 60%;
   overflow: hidden;
@@ -22,7 +22,7 @@
 .legenda {
   position: relative;
   left: 15px;
-  bottom: 170px;
+  bottom: 180px;
 }
 
 .legenda .texts {
@@ -32,12 +32,12 @@
 }
 
 .legenda .texts p {
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: #fff;
 }
 
 .legenda h1 {
-  font-size: 2.9rem;
+  font-size: 3.5rem;
   font-weight: bold;
   margin: 0;
   color: white;
@@ -46,9 +46,9 @@
 .legenda .texts button {
   background-color: #fff;
   padding: 1px 25px;
-  height: 34px;
+  height: 45px;
   border-radius: 20px;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 

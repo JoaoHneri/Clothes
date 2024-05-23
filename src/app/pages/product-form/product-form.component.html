@@ -1,4 +1,5 @@
-<form (ngSubmit)="submitForm()" #productForm="ngForm">
+<div class="content">
+  <form (ngSubmit)="submitForm()" #productForm="ngForm">
   <div class="form-group">
     <label for="productName">Nome do Produto:</label>
     <input type="text" id="productName" name="productName" class="form-control" [(ngModel)]="productName" required>
@@ -27,6 +28,9 @@
   <div class="form-group">
     <label for="image">Fonte da Imagem:</label>
     <input type="file" id="image" name="image" class="form-control-file" (change)="onFileSelected($event)" required>
+    <img [src]="imagePreview" *ngIf="imagePreview" alt="Pré-visualização da imagem" class="image-preview">
   </div>
   <button type="submit" class="btn btn-primary">Enviar</button>
 </form>
+
+</div>

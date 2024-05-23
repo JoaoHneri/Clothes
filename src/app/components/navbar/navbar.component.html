@@ -1,16 +1,19 @@
 <div class="nav shadow-lg p-5 ">
 
 
-  <div class="links_nav flex justify-between">
+
+
+  <div class="titleSj"><p>S&JJ</p></div>
+
+
+    <div class="links_nav flex justify-between">
     <a href="" class="hover:text-stone-500">Home</a>
     <a href="" class="hover:text-stone-500">Categorias</a>
     <a href="" class="hover:text-stone-500">Sobre Nós</a>
   </div>
 
-  <div class="titleSj"><p>S&JJ</p></div>
-
   <div class="flex">
-    <div class="dropdown mr-8" *ngIf="isAuthenticated">
+    <div class="dropdown mr-2" *ngIf="isAuthenticated">
       <button class="dropdown-toggle" (click)="toggleDropdown()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +43,7 @@
       </div>
     </div>
 
-    <div class="dropdown mr-8" *ngIf="!isAuthenticated">
+    <div class="dropdown mr-2" *ngIf="!isAuthenticated">
       <button class="dropdown-toggle" (click)="openModal()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +73,7 @@
       </div>
     </div>
 
-    <a class="cursor-pointer xl:mr-8 sm:pr-9" (click)="clickHistory()"
+    <a class="cursor-pointer" (click)="clickHistory()"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

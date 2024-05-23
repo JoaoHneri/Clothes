@@ -1,6 +1,5 @@
-
-  <div class="dashboard">
-    <aside class="sidebar">
+<div class="dashboard">
+  <!-- <aside class="sidebar">
       <div class="sidebar-header">
         <h2>Dashboard</h2>
       </div>
@@ -13,56 +12,284 @@
           <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
       </nav>
-    </aside>
-    <main class="main-content">
-      <header class="header">
-        <div class="header-content">
-          <h1>Welcome to Your Dashboard</h1>
-          <div class="header-user">
-            <img src="user-avatar.png" alt="User Avatar">
-            <span>{{userName}}</span>
-          </div>
+    </aside> -->
+  <main class="main-content">
+    <header class="header">
+      <div class="header-content">
+        <h1>Bem vindo ao seu Dashboard</h1>
+        <div class="header-user">
+          <span>{{ userName }}</span>
         </div>
-      </header>
-      <section class="content">
-        <div class="widgets">
-          <div class="widget">
-            <h3>Ganhos</h3>
-            <p>R${{rent}}</p>
-          </div>
-          <div class="widget">
-            <h3>Usuários</h3>
-            <p>{{usersLength}}</p>
-          </div>
-          <div class="widget">
-            <h3>Pedidos a enviar</h3>
-            <p>{{orders}}</p>
-          </div>
-          <div class="widget">
-            <h3>Total de Pedidos</h3>
-            <p>{{totalOrders}}</p>
-          </div>
+      </div>
+    </header>
+    <section class="content">
+      <div class="widgets">
+        <div class="widget">
+          <h3>Ganhos</h3>
+          <p clas>R${{ rent }}</p>
         </div>
-        <div class="charts">
-          <div class="chart">
-            <h3>Sales Chart</h3>
-            <!-- Add your chart library and code here -->
-          </div>
-          <div class="chart">
-            <h3>User Growth</h3>
-            <!-- Add your chart library and code here -->
-          </div>
+        <div class="widget">
+          <h3>Usuários</h3>
+          <p>{{ usersLength }}</p>
         </div>
-        <div class="RoutesLinks">
-            <div class="widget">
-                <h3>Produtos Comprados</h3>
-                <a routerLink="/prodProcess">Ver produtos Comprados</a>
-            </div>
-            <div class="widget">
-                <h3>Adicionar Produtos</h3>
-                <a href="prodForm">Adicionar</a>
-            </div>
+        <div class="widget">
+          <h3>Pedidos a enviar</h3>
+          <p>{{ orders }}</p>
         </div>
-      </section>
-    </main>
-  </div>
+        <div class="widget">
+          <h3>Total de Pedidos</h3>
+          <p>{{ totalOrders }}</p>
+        </div>
+      </div>
+      <div class="charts">
+        <div class="chart">
+          <h3>Percentual de Vendas</h3>
+          <app-chart-radial> </app-chart-radial>
+        </div>
+        <div class="chart">
+          <app-chart-date></app-chart-date>
+        </div>
+      </div>
+      <div class="RoutesLinks">
+
+          <button class="animated-button" routerLink="/prodProcess">
+            <svg
+              viewBox="0 0 24 24"
+              class="arr-2"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="#000000"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="10" cy="20.5" r="1" />
+              <circle cx="18" cy="20.5" r="1" />
+              <path
+                d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"
+              />
+            </svg>
+            <span class="text">Ver Produtos A Serem Enviados</span>
+            <span class="circle"></span>
+            <svg
+              viewBox="0 0 24 24"
+              class="arr-1"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="#26a0fc"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="10" cy="20.5" r="1" />
+              <circle cx="18" cy="20.5" r="1" />
+              <path
+                d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"
+              />
+            </svg>
+          </button>
+
+          <!-- ;;;;; -->
+
+
+          <button class="animated-button" routerLink="/prodForm">
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#000000"
+              class="arr-3"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <title></title>
+                <g id="Complete">
+                  <g data-name="add" id="add-2">
+                    <g>
+                      <line
+                        fill="none"
+                        stroke="#000000"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        x1="12"
+                        x2="12"
+                        y1="19"
+                        y2="5"
+                      ></line>
+                      <line
+                        fill="none"
+                        stroke="#000000"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        x1="5"
+                        x2="19"
+                        y1="12"
+                        y2="12"
+                      ></line>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+            <span class="text">Adicionar Produtos</span>
+            <span class="circle"></span>
+
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#26a0fc"
+              class="arr-1"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <title></title>
+                <g id="Complete">
+                  <g data-name="add" id="add-2">
+                    <g>
+                      <line
+                        fill="none"
+                        stroke="#26a0fc"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        x1="12"
+                        x2="12"
+                        y1="19"
+                        y2="5"
+                      ></line>
+                      <line
+                        fill="none"
+                        stroke="#26a0fc"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        x1="5"
+                        x2="19"
+                        y1="12"
+                        y2="12"
+                      ></line>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </button>
+
+
+          <!-- ;;;;; -->
+
+
+          <button class="animated-button" routerLink="/prodForm">
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#000000"
+              class="arr-3"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <title></title>
+                <g id="Complete">
+                  <g data-name="add" id="add-2">
+                    <g>
+                      <line
+                        fill="none"
+                        stroke="#000000"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        x1="12"
+                        x2="12"
+                        y1="19"
+                        y2="5"
+                      ></line>
+                      <line
+                        fill="none"
+                        stroke="#000000"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        x1="5"
+                        x2="19"
+                        y1="12"
+                        y2="12"
+                      ></line>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+            <span class="text">Ver Todos os Produtos</span>
+            <span class="circle"></span>
+
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="#26a0fc"
+              class="arr-1"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <title></title>
+                <g id="Complete">
+                  <g data-name="add" id="add-2">
+                    <g>
+                      <line
+                        fill="none"
+                        stroke="#26a0fc"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        x1="12"
+                        x2="12"
+                        y1="19"
+                        y2="5"
+                      ></line>
+                      <line
+                        fill="none"
+                        stroke="#26a0fc"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        x1="5"
+                        x2="19"
+                        y1="12"
+                        y2="12"
+                      ></line>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+          </button>
+      </div>
+    </section>
+  </main>
+</div>
