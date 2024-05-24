@@ -38,6 +38,10 @@ import { CategoryCardsComponent } from './components/category-cards/category-car
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ChartRadialComponent } from './components/chart-radial/chart-radial.component';
 import { ChartDateComponent } from './components/chart-date/chart-date.component';
+import { AllProdsComponent } from './pages/all-prods/all-prods.component';
+import { CardToUpdateComponent } from './components/card-to-update/card-to-update.component';
+import { SkeletonCardComponent } from './components/skeleton-card/skeleton-card.component';
+import { EditPodFormComponent } from './pages/edit-pod-form/edit-pod-form.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +75,10 @@ import { ChartDateComponent } from './components/chart-date/chart-date.component
     CategoryCardsComponent,
     ChartRadialComponent,
     ChartDateComponent,
+    AllProdsComponent,
+    CardToUpdateComponent,
+    SkeletonCardComponent,
+    EditPodFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,11 @@
+<div class="content">
+    <div class="cards" *ngIf="!produtos">
+        <app-skeleton-card></app-skeleton-card>
+        <app-skeleton-card></app-skeleton-card>
+        <app-skeleton-card></app-skeleton-card>
+    </div>
+    <div class="cards" *ngIf="produtos">
+        <app-card-to-update *ngFor="let item of produtos" [src]="item.src" [price]="item.productPrice" [title]="item.productName" [description]="item.productDescription" [quantity]="item.productQuantity" [_id]="item._id" (emitDelete)="changeEvent($event)"></app-card-to-update>
+    </div>
+    
+</div>

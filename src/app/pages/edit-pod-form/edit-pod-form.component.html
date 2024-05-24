@@ -1,0 +1,36 @@
+<div class="content">
+    <form (ngSubmit)="submitForm()" #productForm="ngForm">
+    <div class="form-group">
+      <label for="productName">Nome do Produto:</label>
+      <input type="text" id="productName" name="productName" class="form-control" [(ngModel)]="productName" required>
+    </div>
+    <div class="form-group">
+      <label for="productPrice">Preço do Produto:</label>
+      <input type="number" id="productPrice" name="productPrice" class="form-control" [(ngModel)]="productPrice" required>
+    </div>
+    <div class="form-group">
+      <label for="productSizes">Tamanhos do Produto:</label>
+      <input type="text" id="productSizes" name="productSizes" class="form-control" [(ngModel)]="productSizes" required>
+      <small class="form-text text-muted">Separe os tamanhos com vírgula (por exemplo: P, M, G).</small>
+    </div>
+    <div class="form-group">
+      <label for="productCategory">Categoria do Produto:</label>
+      <input type="text" id="productCategory" name="productCategory" class="form-control" [(ngModel)]="productCategory" required>
+    </div>
+    <div class="form-group">
+      <label for="productDescription">Descrição do Produto:</label>
+      <textarea id="productDescription" name="productDescription" class="form-control" [(ngModel)]="productDescription" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="productQuantity">Quantidade do Produto:</label>
+      <input type="number" id="productQuantity" name="productQuantity" class="form-control" [(ngModel)]="productQuantity" required>
+    </div>
+    <div class="form-group">
+      <label for="image">Fonte da Imagem:</label>
+      <input type="file" id="image" name="image" class="form-control-file" (change)="onFileSelected($event)" required>
+      <img [src]="imagePreview" *ngIf="imagePreview" alt="Pré-visualização da imagem" class="image-preview">
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+  
+  </div>

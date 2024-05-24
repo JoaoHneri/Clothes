@@ -11,6 +11,8 @@ import { SuccesPaymentComponent } from './pages/succes-payment/succes-payment.co
 import { LoginAdminComponent } from './pages/login-admin/login-admin.component';
 import { ProductProcessComponent } from './pages/product-process/product-process.component';
 import { SendProdsComponent } from './pages/send-prods/send-prods.component';
+import { AllProdsComponent } from './pages/all-prods/all-prods.component';
+import { EditPodFormComponent } from './pages/edit-pod-form/edit-pod-form.component';
 
 const routes: Routes = [
 {path: '', component: HomeComponent},
@@ -24,6 +26,8 @@ const routes: Routes = [
 {path: 'loginAdmin', component: LoginAdminComponent},
 {path: 'prodProcess', component: ProductProcessComponent},
 {path: 'sendProds/:_id', component: SendProdsComponent},
+{path: 'allProdsAdmin', component: AllProdsComponent},
+{path: 'editProd/:_id', component: EditPodFormComponent},
 ];
 
 @NgModule({

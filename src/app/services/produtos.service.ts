@@ -25,6 +25,7 @@ export class ProdutosService {
   getProdutos():Observable<Product>{
     const Url = `${this.ApiUrl}products`
     return this.http.get<Product>(Url);
+    
   }
 
   getProdutoPorId(idProd: String): Observable<Product>{
@@ -43,6 +44,32 @@ export class ProdutosService {
         this.messageS.showErrorMessage("Erro desconhecido ao adicionar produto!");
       }
     }))
+  }
+  updateProduto(id: string, formData: FormData): Observable<any> {
+    const url = `${this.ApiUrl}products/${id}`;
+    return this.http.put<any>(url, formData).pipe(
+      tap((response) => {
+        if (response) {
+          this.messageS.showSuccessMessage("Produto atualizado com sucesso!");
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.messageS.showErrorMessage("Erro desconhecido ao atualizar produto!");
+        }
+      })
+    );
+  }
+
+  deleteItem(_id: String): Observable<any> {
+
+    const url = `${this.ApiUrl}products/${_id}`;
+    return this.http.delete<any>(url).pipe(tap((response)=>{
+      this.messageS.showSuccessMessage("Produto Deletado");
+      setTimeout(()=>{
+        window.location.reload();
+      },2000)
+      
+    }));
+    
   }
 
   
