@@ -118,3 +118,15 @@
     font-size: 12px;
     color: #525252;
   }
+
+
+  @media (max-width: 768px) {
+    .shipping-info {
+      background-color: #f7f8fa;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      width: 300px; /* Ajuste a largura conforme necessário */
+      margin-top: 20px;
+    }
+  }

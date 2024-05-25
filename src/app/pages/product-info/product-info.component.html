@@ -12,14 +12,16 @@
           <p class="text-lg font-bold text-black-600 mb-4">R$ {{ prod.productPrice }}</p>
           <div class="mb-4">
             <label class="block text-sm font-semibold mb-2">Tamanho:</label>
-            <div class="flex items-center space-x-4">
+            <div class="flex flex-wrap items-center space-x-2 sm:space-x-1">
               <ng-container *ngFor="let tamanhoObj of prod.productSizes">
                 <input type="radio" [id]="tamanhoObj.size" name="tamanho" [value]="tamanhoObj.size" class="sr-only" [(ngModel)]="produtoSelecionado">
-                <label [for]="tamanhoObj.size" class="radio-label cursor-pointer border border-gray-400 rounded-md px-4 py-2" [class.selected]="produtoSelecionado === tamanhoObj.size">
+                <label [for]="tamanhoObj.size" class="radio-label cursor-pointer border border-gray-400 rounded-md px-3 py-1 text-sm sm:px-2 sm:py-1 sm:text-xs md:px-3 md:py-2 md:text-sm lg:px-4 lg:py-2 lg:text-base" 
+                       [class.selected]="produtoSelecionado === tamanhoObj.size">
                   {{ tamanhoObj.size }}
                 </label>
               </ng-container>
             </div>
+            
           </div>
           
           

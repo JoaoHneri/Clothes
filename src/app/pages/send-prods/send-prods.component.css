@@ -1,71 +1,185 @@
-.content{
-    height: 100%;
-    display: flex;
-    justify-content: center;
+.content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centraliza verticalmente */
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
 }
 
-.prods{
-    margin-top: 40px;
-    margin-bottom: 40px;
-    width: 100%;
+.prods {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 100%;
 }
+
 .product-detail-container {
-    display: flex;
-    flex-direction: column ;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    width: 80%;
-    margin: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
 
+.product-detail-container:hover {
+  transform: scale(1.02);
+}
 
-  }
-  
-  .product-info{
-    background-color: #ffffff;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid #e0e0e0;
-  }
+.product-detail-container h2 {
+  text-align: center;
+  font-size: 1.8em;
+  border-bottom: 2px solid #1a1b1b;
+  margin-bottom: 20px;
+  color: #1a1b1b;
+}
 
-  .address-info {
-    background-color: #ffffff;
-    display: flex;
+.contentOff {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  background-color: #ffffff;
+}
+
+.contentOff:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-info {
+  padding: 15px;
+  width: 50%;
+}
+
+.address-info-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.address-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  width: 50%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  border-left: 2px solid rgba(0, 0, 0, 0.1); /* Borda lateral sutil */
+}
+
+.infos {
+  margin-top: 15px;
+}
+
+h2, h3 {
+  color: #333;
+}
+
+.imgInfo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.send-product-btn {
+  background-color: #1a1b1b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.send-product-btn:hover {
+  background-color: #363636;
+  transform: translateY(-2px);
+}
+
+.addrs h3 {
+  font-size: 1.3em;
+  border-bottom: 2px solid #1a1b1b;
+  margin-bottom: 20px;
+  color: #1a1b1b;
+}
+
+.address-info {
+  width: 100%;
+}
+
+.address-info h3 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #1a1b1b;
+  text-align: center;
+  width: 100%;
+}
+
+.tracking-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.tracking-input:focus {
+  outline: none;
+  border-color: #1a1b1b;
+}
+
+.send-tracking-btn {
+  background-color: #1a1b1b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.send-tracking-btn:hover {
+  background-color: #363636;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .product-detail-container {
     flex-direction: column;
-    align-items: center;
+    width: 100%;
     padding: 15px;
-    width: 50%;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid #e0e0e0;}
+  }
 
-  .address-info-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: #ffffff;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid #e0e0e0;
+  .contentOff {
+    flex-direction: column;
   }
-  
-  h2, h3 {
-    color: #333;
+
+  .send-product-btn,
+  .send-tracking-btn {
+    width: 100%;
+    text-align: center;
   }
-  
-  .send-product-btn {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+  .product-info,
+  .address-info {
+    width: 100%;
+    border-left: none;
+    border-top: 2px solid rgba(0, 0, 0, 0.1); /* Borda superior sutil para mobile */
   }
-  
-  .send-product-btn:hover {
-    background-color: #218838;
-  }
-  
+}
