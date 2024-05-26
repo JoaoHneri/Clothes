@@ -35,7 +35,7 @@
   </div>
   
   <!-- Verificação se há produtos ou se houve erro na requisição -->
-  <div class="oderdsCard">
+  <div class="oderdsCard max-h-80 overflow-auto" >
     <ng-container *ngIf="prods && prods.length > 0; else noProducts">
       <app-order-card  
         *ngFor="let prod of prods" 
