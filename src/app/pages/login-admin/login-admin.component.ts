@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminService } from 'src/app/services/admin.service';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
 import { MessageServiceService } from 'src/app/services/message-service.service';
 
@@ -13,7 +14,7 @@ export class LoginAdminComponent implements OnInit {
   userEmail: string = '';
   userPassword: string = '';
 
-  constructor(private authService: AuthServicesService, private router: Router, private messageS: MessageServiceService) { }
+  constructor(private admService: AdminService, private router: Router, private messageS: MessageServiceService) { }
 
 
   ngOnInit(): void {
@@ -21,7 +22,7 @@ export class LoginAdminComponent implements OnInit {
   }
 
   login(): void {
-    this.authService.loginAdmin(this.userEmail, this.userPassword)
+    this.admService.loginAdmin(this.userEmail, this.userPassword)
       .subscribe(response => {
         
       }, error => {

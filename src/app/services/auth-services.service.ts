@@ -11,7 +11,7 @@ export class AuthServicesService {
   private apiUrl = environment.apiUrl;
   private usuario!: String;
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
-
+  private LoggedIn = false;
 
   constructor(private httpClient: HttpClient, private router: Router, private messageS: MessageServiceService) {
     this.checkAuthentication();
@@ -25,6 +25,7 @@ export class AuthServicesService {
   isAuthenticated$() {
     return this.isAuthenticatedSubject.asObservable();
   }
+
 
   register(formData: FormData): Observable<LoginResponse> {
     const url = `${this.apiUrl}auth/register`;
@@ -77,6 +78,7 @@ export class AuthServicesService {
           this.isAuthenticatedSubject.next(true);
           this.messageS.showSuccessMessage("Usuário logado com sucesso")
           window.location.reload();
+          this.LoggedIn = true;
         } else {
           this.messageS.showErrorMessage(response.msg || 'Erro desconhecido ao fazer login')
         }
@@ -97,6 +99,7 @@ export class AuthServicesService {
         sessionStorage.removeItem('isAdmin');
         this.messageS.showSuccessMessage("Usuário Deslogado.");
         this.isAuthenticatedSubject.next(false);
+        this.LoggedIn = false;
         window.location.reload();
       }
     });
@@ -138,6 +141,7 @@ export class AuthServicesService {
           this.isAuthenticatedSubject.next(true);
           this.messageS.showSuccessMessage("Usuário logado com sucesso")
           this.router.navigate(['/dashboard']);
+          
         } else {
           this.messageS.showErrorMessage(response.msg || 'Erro desconhecido ao fazer login')
         }
@@ -155,4 +159,8 @@ export class AuthServicesService {
       return this.httpClient.get<any>(url)
     }
 
+
+    isLoggedIn(){
+      return this.LoggedIn;
+    }
 }

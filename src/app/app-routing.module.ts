@@ -13,21 +13,22 @@ import { ProductProcessComponent } from './pages/product-process/product-process
 import { SendProdsComponent } from './pages/send-prods/send-prods.component';
 import { AllProdsComponent } from './pages/all-prods/all-prods.component';
 import { EditPodFormComponent } from './pages/edit-pod-form/edit-pod-form.component';
-
+import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 const routes: Routes = [
 {path: '', component: HomeComponent},
 {path: 'products/:category', component: ProdutcsPagesComponent},
-{path: 'account/:id', component: MyAccountComponent},
+{path: 'account/:id', component: MyAccountComponent, canActivate:[AuthGuard]},
 {path: 'product/:id', component: ProductInfoComponent},
-{path: 'success-payment/:user_id/:_id', component: SuccesPaymentComponent},
+{path: 'success-payment/:user_id/:_id', component: SuccesPaymentComponent, canActivate:[AuthGuard]},
 // somente Admin
-{path: 'prodForm', component: ProductFormComponent},
-{path: 'dashboard', component: DashComponenteComponent},
+{path: 'prodForm', component: ProductFormComponent, canActivate:[AdminGuard]},
+{path: 'dashboard', component: DashComponenteComponent, canActivate:[AdminGuard]},
 {path: 'loginAdmin', component: LoginAdminComponent},
-{path: 'prodProcess', component: ProductProcessComponent},
-{path: 'sendProds/:_id', component: SendProdsComponent},
-{path: 'allProdsAdmin', component: AllProdsComponent},
-{path: 'editProd/:_id', component: EditPodFormComponent},
+{path: 'prodProcess', component: ProductProcessComponent, canActivate:[AdminGuard]},
+{path: 'sendProds/:_id', component: SendProdsComponent, canActivate:[AdminGuard]},
+{path: 'allProdsAdmin', component: AllProdsComponent, canActivate:[AdminGuard]},
+{path: 'editProd/:_id', component: EditPodFormComponent, canActivate:[AdminGuard]},
 ];
 
 @NgModule({
