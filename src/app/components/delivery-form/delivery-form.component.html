@@ -6,7 +6,7 @@
   <p>Cidade: {{address.cidade}},</p>
   <p>Estado: {{address.estado}},</p>
   <p>CEP: {{address.cep}},</p>
-  <p>Endereço:{{address.endereco}},</p>
+  <p>Endereço: {{address.endereco}},</p>
   <p>Número: {{address.numero}}</p>
   <div class="opts">
     <button class="btn btn-primary">Editar</button>
@@ -21,7 +21,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <h2 class="text-center mb-4">Adicionar Endereço de Entrega</h2>
-        <form [formGroup]="enderecoForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="enderecoForm" (ngSubmit)="onSubmit()" class="endereco-form">
           <div class="form-group">
             <label for="endereco">Endereço</label>
             <input
@@ -33,7 +33,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="nome">Bairro</label>
+            <label for="bairro">Bairro</label>
             <input
               type="text"
               id="bairro"
@@ -43,7 +43,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="nome">Número</label>
+            <label for="numero">Número</label>
             <input
               type="text"
               id="numero"
@@ -90,6 +90,7 @@
             Adicionar Endereço
           </button>
         </form>
+        
       </div>
     </div>
   </div>

@@ -55,6 +55,7 @@
 .product-info {
   padding: 15px;
   width: 50%;
+  height: 100%;
 }
 
 .address-info-content {
@@ -90,7 +91,14 @@ h2, h3 {
 .imgInfo {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  align-items: center;
+  margin-top: 15px;
+  
+}
+
+.imgInfo img {
+  width: 100%;
+  height: auto;
 }
 
 .send-product-btn {

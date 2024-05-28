@@ -32,7 +32,7 @@ export class SuccesPaymentComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.user_id = params['user_id'];
       this._id = params['_id'];
-      // Verificar se user_id e _id existem e são válidos, e passá-los para a função
+
       if (this.user_id && this._id) {
         this.prodPay.updateBuyedProduct(this.user_id, this._id).subscribe(
           response => {
@@ -54,7 +54,7 @@ export class SuccesPaymentComponent implements OnInit {
     this.messageS.showSuccessMessage("Você Será Redirecionado Para Sua Página De Conta em Alguns Segundos...");
     setTimeout(() => {
       this.router.navigate([`/account/${this.user_id}`]);
-    }, 10000);
+    }, 6000);
   }
 
   @HostListener('window:beforeunload', ['$event'])

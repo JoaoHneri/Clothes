@@ -46,29 +46,21 @@ export class ProdPaymentsService {
   )}
 
 
-  addProdToPay(orderPayment: OrderPayment): Observable<OrderPayment> {
+  addProdToPay(orderPayment: OrderPayment): Observable<OrderPayment>{
     const url = `${this.ApiUrl}createOrder`;
-    
-    return this.http.post<OrderPayment>(url, orderPayment).pipe(
-      tap((response) => {
-        if (response) {
-          if (response.init_point) {
-            setTimeout(() => {
-              alert("Aguarde...");
-            }, 3000);
-            window.location.href = response.init_point;
-          }
-        } else {
-          console.log('Não Existe');
-        }
-      }),
-      catchError((error) => {
-        this.messageS.showErrorMessage(
-          error.error.message || 'Erro ao efetuar pagamento. Por favor, tente novamente mais tarde.'
+    return this.http.post<OrderPayment>(url, orderPayment).pipe(tap((response) => {
+      if (response) {
+        if(response.init_point) {
+          setTimeout(()=>{
+            alert("Aguarde...")
+          }, 3000)
+        window.location.href = response.init_point}
+      } else {
+        console.log(
+          'Não Existe'
         );
-        return throwError(error);
-      })
-    );
+      }
+    }));
   }
 
 

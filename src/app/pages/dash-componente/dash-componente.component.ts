@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from 'src/app/services/admin.service';
 import { AuthServicesService } from 'src/app/services/auth-services.service';
 
 
@@ -10,7 +11,7 @@ import { AuthServicesService } from 'src/app/services/auth-services.service';
 export class DashComponenteComponent implements OnInit {
 
   
-  userId = String(this.authService.checkUserId());
+  userId = String(this.admService.checkUserId());
   orders: number = 0;
   rent: number = 0;
   userName: string = '';
@@ -18,11 +19,11 @@ export class DashComponenteComponent implements OnInit {
   totalOrders: number = 0;
 
 
-  constructor(private authService: AuthServicesService) {
+  constructor(private admService: AdminService) {
    }
 
   ngOnInit(): void {
-    this.authService.getUserAdmin(this.userId).subscribe((response)=>{
+    this.admService.getUserAdmin(this.userId).subscribe((response)=>{
         this.orders = response.Orders;
         this.rent = response.Rent;
         this.userName = response.userName;
