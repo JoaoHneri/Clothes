@@ -16,10 +16,14 @@ export class NavbarComponent implements OnInit, OnChanges {
   isAuthenticated = false;
   userId = this.authS.checkUserId();
   isAdmin!: boolean;
+  isVisible = false;
   private CarrinhoOffcanvasComponet!: CarrinhoOffcanvasComponent;
 
   constructor(private authS: AuthServicesService) {}
-
+  
+  toggleVisibility() {
+    this.isVisible = !this.isVisible;
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.userId = this.authS.checkUserId();
