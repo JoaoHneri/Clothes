@@ -42,7 +42,8 @@ import { AllProdsComponent } from './pages/all-prods/all-prods.component';
 import { CardToUpdateComponent } from './components/card-to-update/card-to-update.component';
 import { SkeletonCardComponent } from './components/skeleton-card/skeleton-card.component';
 import { EditPodFormComponent } from './pages/edit-pod-form/edit-pod-form.component';
-
+import { ScrollToTopService } from './services/scroll-to-top.service';
+import { ChartDonutsComponent } from './components/chart-donuts/chart-donuts.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +80,7 @@ import { EditPodFormComponent } from './pages/edit-pod-form/edit-pod-form.compon
     CardToUpdateComponent,
     SkeletonCardComponent,
     EditPodFormComponent,
+    ChartDonutsComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,7 +91,7 @@ import { EditPodFormComponent } from './pages/edit-pod-form/edit-pod-form.compon
     FormsModule, ReactiveFormsModule, SweetAlert2Module.forRoot(),
     NgApexchartsModule,
   ],
-  providers: [],
+  providers: [ScrollToTopService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

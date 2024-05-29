@@ -1,57 +1,42 @@
 <div class="dashboard">
-  <!-- <aside class="sidebar">
-      <div class="sidebar-header">
-        <h2>Dashboard</h2>
-      </div>
-      <nav class="sidebar-nav">
-        <ul>
-          <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-          <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
-          <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
-          <li><a href="#"><i class="fas fa-cogs"></i> Settings</a></li>
-          <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-        </ul>
-      </nav>
-    </aside> -->
   <main class="main-content">
-    <header class="header">
+    <!-- <header class="header">
       <div class="header-content">
         <h1>Bem vindo ao seu Dashboard</h1>
         <div class="header-user">
           <span>{{ userName }}</span>
         </div>
       </div>
-    </header>
+    </header> -->
     <section class="content">
       <div class="widgets">
         <div class="widget">
-          <h3>Ganhos</h3>
+          <h3>Ganhos:</h3>
+
           <p clas>R${{ rent }}</p>
         </div>
         <div class="widget">
-          <h3>Usuários</h3>
+          <h3>Usuários:</h3>
           <p>{{ usersLength }}</p>
         </div>
         <div class="widget">
-          <h3>Pedidos a enviar</h3>
+          <h3>Pedidos a enviar:</h3>
           <p>{{ orders }}</p>
         </div>
         <div class="widget">
-          <h3>Total de Pedidos</h3>
+          <h3>Total de Pedidos:</h3>
           <p>{{ totalOrders }}</p>
         </div>
       </div>
-      <div class="charts">
-        <div class="chart">
-          <h3>Percentual de Vendas</h3>
-          <app-chart-radial> </app-chart-radial>
-        </div>
+
+      <div class="comp">
         <div class="chart">
           <app-chart-date></app-chart-date>
         </div>
-      </div>
-      <div class="RoutesLinks">
-
+        <div class="RoutesLinks">
+          <div class="explan flex-row text-center">
+            <h1>Painel de Controle</h1>
+          </div>
           <button class="animated-button" routerLink="/prodProcess">
             <svg
               viewBox="0 0 24 24"
@@ -88,8 +73,6 @@
               />
             </svg>
           </button>
-
-          <!-- ;;;;; -->
 
 
           <button class="animated-button" routerLink="/prodForm">
@@ -190,8 +173,6 @@
           </button>
 
 
-          <!-- ;;;;; -->
-
 
           <button class="animated-button" routerLink="/allProdsAdmin">
             <svg
@@ -289,6 +270,19 @@
               </g>
             </svg>
           </button>
+          
+        </div>
+      </div>
+
+      <div class="comp">
+        <div class="chart">
+              <h3>Percentual de Vendas</h3>
+              <app-chart-radial> </app-chart-radial>
+            </div>
+            <div class="chart-donut">
+              <h3>Produtos Mais Vendidos</h3>
+              <app-chart-donuts></app-chart-donuts>
+            </div>
       </div>
     </section>
   </main>
